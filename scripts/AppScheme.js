@@ -90,6 +90,10 @@ let pphubOpenUser = user => {
 let pphubOpenRepository = (user, repository) => {
     $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
 };
+// Woring copy
+let workingcopyClone = url => {
+    $app.openURL(`working-copy://clone?remote=${url}`);
+};
 module.exports = {
     alookBrowserOpen,
     chromeBrowserOpen,
@@ -109,5 +113,6 @@ module.exports = {
     getAcfunVideoWebUrl,
     safariOpen,
     pphubOpenUser,
-    pphubOpenRepository
+    pphubOpenRepository,
+    workingcopyClone
 };
