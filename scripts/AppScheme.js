@@ -70,10 +70,10 @@ let documentsOpen = url => {
 let bilibiliVideo = vid => {
     $app.openURL(getBilibiliVideoUrl(vid));
 };
-// Acfun
 let getBilibiliVideoUrl = vid => {
     return `bilibili://video/${vid}`;
 };
+// Acfun
 let acfunVideo = vid => {
     $app.openURL(getAcfunVideoUrl(vid));
 };
