@@ -90,9 +90,27 @@ let pphubOpenUser = user => {
 let pphubOpenRepository = (user, repository) => {
     $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
 };
-// Woring copy
+// Woring Copy
 let workingcopyClone = url => {
     $app.openURL(`working-copy://clone?remote=${url}`);
+};
+// Microsoft Edge
+let microsoftEdgeWeb = url => {
+    $app.openURL(`microsoft-edge-${url}`);
+};
+// Jsbox
+let jsboxInstall = (url, name = undefined, icon = undefined) => {
+    var installUrl = `jsbox://import?url=${encodeURI(url)}`;
+    if (name) {
+        installUrl += `&name=${encodeURI(name)}`;
+    }
+    if (icon) {
+        installUrl += `&icon=${encodeURI(icon)}`;
+    }
+    $app.openURL(installUrl);
+};
+let jsboxRun = (name, location = "local") => {
+    $app.openURL(`jsbox://run?name=${encodeURI(name)}&location=${location}`);
 };
 module.exports = {
     alookBrowserOpen,
@@ -114,5 +132,8 @@ module.exports = {
     safariOpen,
     pphubOpenUser,
     pphubOpenRepository,
-    workingcopyClone
+    workingcopyClone,
+    microsoftEdgeWeb,
+    jsboxInstall,
+    jsboxRun
 };
