@@ -1,6 +1,9 @@
-let appScheme = require("./scripts/AppScheme");
+let appScheme = require("./AppScheme");
 class Video {
     nPlayer(_url) {
+        appScheme.nplayerVideo(_url);
+    }
+    bilibiliVideo(_url) {
         appScheme.nplayerVideo(_url);
     }
 }

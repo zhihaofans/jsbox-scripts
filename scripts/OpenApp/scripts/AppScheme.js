@@ -12,6 +12,10 @@ let chromeBrowserOpen = url => {
         url: url
     });
 };
+// Chrome (使用Scheme)
+let chrome = url => {
+    $app.openURL(url.replace("http://", "googlechrome://").replace("https://", "googlechromes://"));
+};
 // QQ浏览器 (使用jsbox接口)
 let qqBrowserOpen = url => {
     $app.openBrowser({
@@ -124,6 +128,7 @@ let thorLaunch = filterName => {
 module.exports = {
     alookBrowserOpen,
     chromeBrowserOpen,
+    chrome,
     qqBrowserOpen,
     alookBrowserDownload,
     firefoxBrowserOpen,
