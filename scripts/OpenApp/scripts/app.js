@@ -8,5 +8,5 @@ class Video {
     }
 }
 module.exports = {
-    video: new Video
+    video: Video
 };
