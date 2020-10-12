@@ -12,10 +12,6 @@ let chromeBrowserOpen = url => {
         url: url
     });
 };
-// Chrome (使用Scheme)
-let chrome = url => {
-    $app.openURL(url.replace("http://", "googlechrome://").replace("https://", "googlechromes://"));
-};
 // QQ浏览器 (使用jsbox接口)
 let qqBrowserOpen = url => {
     $app.openBrowser({
@@ -71,14 +67,20 @@ let documentsOpen = url => {
     $app.openURL(`r${url}`);
 };
 // Bilibili
+let bilibiliApp = (mode, id) => {
+    $app.openURL(`bilibili://${mode}/${id}`);
+};
 let bilibiliVideo = vid => {
-    $app.openURL(getBilibiliVideoUrl(vid));
+    bilibiliApp("video", vid);
 };
 let getBilibiliVideoUrl = vid => {
     return `bilibili://video/${vid}`;
 };
 let bilibiliLive = roomid => {
-    $app.openURL(`bilibili://live/${roomid}`);
+    bilibiliApp("live", roomid);
+};
+let bilibiliSpace = uid => {
+    bilibiliApp("space", uid);
 };
 // Acfun
 let acfunVideo = vid => {
@@ -136,7 +138,6 @@ let adaoThread = t => {
 module.exports = {
     alookBrowserOpen,
     chromeBrowserOpen,
-    chrome,
     qqBrowserOpen,
     alookBrowserDownload,
     firefoxBrowserOpen,
@@ -160,5 +161,7 @@ module.exports = {
     jsboxRun,
     thorLaunch,
     bilibiliLive,
-    adaoThread
+    adaoThread,
+    bilibiliSpace,
+    bilibiliApp
 };
