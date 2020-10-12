@@ -73,6 +73,9 @@ let bilibiliVideo = vid => {
 let getBilibiliVideoUrl = vid => {
     return `bilibili://video/${vid}`;
 };
+let bilibiliLive = roomid => {
+    $app.openURL(`bilibili://live/${roomid}`);
+};
 // Acfun
 let acfunVideo = vid => {
     $app.openURL(getAcfunVideoUrl(vid));
@@ -121,6 +124,11 @@ let thorLaunch = filterName => {
     }
     $app.openURL(appUrl);
 };
+
+// A岛匿名版
+let adaoThread = t => {
+    $app.openURL(`adnmb://t/${t}`);
+};
 module.exports = {
     alookBrowserOpen,
     chromeBrowserOpen,
@@ -145,5 +153,7 @@ module.exports = {
     microsoftEdgeWeb,
     jsboxInstall,
     jsboxRun,
-    thorLaunch
+    thorLaunch,
+    bilibiliLive,
+    adaoThread
 };
