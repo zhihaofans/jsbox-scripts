@@ -1,7 +1,13 @@
 {
-  "ZJUM":{
-    "desc":"zhihaofans的JSBox更新管理器",
-    "type":"app",
-    "hash":""
+  "ZJUM": {
+    "desc": "zhihaofans的JSBox更新管理器",
+    "type": "app",
+    "author": "zhihaofans",
+    "version": "1.0.0-20201028a1",
+    "website": "https://github.com/zhihaofans/jsbox-scripts/tree/master/scripts/ZJUM",
+    "source": "github",
+    "github": "zhihaofans/ZJUM-bucket",
+    "github_branch": "main",
+    "github_file_path": "bucket/ZJUM.box"
   }
 }

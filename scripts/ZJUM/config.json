@@ -1,10 +1,10 @@
 {
   "info": {
-    "name": "",
-    "url": "",
-    "version": "1.0.0",
-    "author": "",
-    "website": "",
+    "name": "ZJUM",
+    "url": "https://github.com/zhihaofans/ZJUM-bucket/raw/main/bucket/ZJUM.box",
+    "version": "1.0.0-20201028a1",
+    "author": "zhihaofans",
+    "website": "https://github.com/zhihaofans/jsbox-scripts/tree/master/scripts/ZJUM",
     "types": 0
   },
   "settings": {

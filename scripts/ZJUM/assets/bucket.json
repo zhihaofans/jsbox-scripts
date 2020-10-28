@@ -1,0 +1,9 @@
+[{
+    "bucket_id": "github_origin",
+    "bucket_name": "Github",
+    "bucket_url": "https://github.com/zhihaofans/ZJUM-bucket/raw/main/bucket/version.json"
+}, {
+    "bucket_id": "github_jsdelivr",
+    "bucket_name": "Github(jsDelivr)",
+    "bucket_url": "https://cdn.jsdelivr.net/gh/zhihaofans/ZJUM-bucket@main/bucket/version.json"
+}]
