@@ -1,0 +1,33 @@
+{
+  "title": "SETTINGS",
+  "groups": [{
+    "title": "GENERAL",
+    "items": [{
+        "title": "OK",
+        "type": "string",
+        "key": "user.name",
+        "value": "default user name"
+      },
+      {
+        "title": "AUTO_SAVE",
+        "type": "boolean",
+        "key": "auto.save",
+        "value": true
+      },
+      {
+        "title": "OTHERS",
+        "type": "child",
+        "value": {
+          "title": "OTHERS",
+          "groups": [
+
+          ]
+        }
+      }, {
+        "title": "TEST",
+        "type": "script",
+        "value": "require('scripts/test').runTest();"
+      }
+    ]
+  }]
+}
