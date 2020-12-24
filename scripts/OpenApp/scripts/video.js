@@ -1,5 +1,4 @@
-let $$app = require("./app.js");
-let $$video = new $$app.video();
+let $$video = require("AppScheme").video;
 let appList = {
     nplayer: "nPlayer",
     documents: "Documents"
@@ -16,12 +15,7 @@ let getVideoApp = () => {
 let openApp = (appId, url) => {
     switch (appId) {
         case "nPlayer":
-            $$video.nplayer(url);
+        $$video
             break;
     }
-};
-
-module.exports = {
-    openApp,
-    getVideoApp
 };
