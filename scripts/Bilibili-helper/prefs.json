@@ -1,0 +1,25 @@
+{
+  "title": "设置",
+  "groups": [{
+    "title": "Mod",
+    "items": [{
+      "title": "哔哩哔哩",
+      "type": "child",
+      "value": {
+        "title": "哔哩哔哩mod",
+        "items": [{
+          "title": "Access key",
+          "type": "string",
+          "key": "user.auth.access_key"
+        }, {
+          "title": "uid",
+          "type": "number",
+          "key": "user.auth.uid"
+        }, {
+          "title": "Cookies",
+          "type": "string",
+          "key": "user.auth.cookies"
+        }]
+      }
+  }]
+}
