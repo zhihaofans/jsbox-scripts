@@ -1,12 +1,12 @@
 {
   "title": "设置",
   "groups": [{
-    "title": "Mod",
+    "title": "哔哩哔哩",
     "items": [{
       "title": "哔哩哔哩",
       "type": "child",
       "value": {
-        "title": "哔哩哔哩mod",
+        "title": "哔哩哔哩",
         "items": [{
           "title": "Access key",
           "type": "string",
