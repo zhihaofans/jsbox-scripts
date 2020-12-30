@@ -134,6 +134,7 @@ let $DB = require("./data_base"),
                                 handler: function () {}
                             }]
                         });
+                        return kaaassData;
                     } else {
                         $ui.loading(false);
                         $ui.alert({
@@ -147,9 +148,8 @@ let $DB = require("./data_base"),
                         });
                     }
                 }
-            } else {
-                return undefined;
             }
+            return undefined;
         },
         getMyInfo: () => {
             const access_key = Auth.accessKey();
