@@ -1,5 +1,6 @@
 let $_Cache = require("./data_base").Cache,
     $_Static = require("./static"),
+    $Dialogs = require("./libs/dialogs"),
     Auth = {
         getSignUrl: async (host, param, android = false) => {
             const url = `${$_Static.URL.KAAASS.SIGN_URL}?host=${encodeURI(host)}&param=${encodeURI(param)}&android=${android}`,
@@ -68,6 +69,7 @@ let $_Cache = require("./data_base").Cache,
                     return $_get.data.status == "OK";
                 }
             } else {
+                $ui.loading(false);
                 return false;
             }
         },
@@ -242,7 +244,20 @@ let $_Cache = require("./data_base").Cache,
         }
     },
     View = {
-        updateAccessKey: () => {
+        updateAccessKey: async () => {
+            const access_key = await $Dialogs.Dialogs.showInputAlert("输入Access key");
+            $console.warn(access_key);
+            if (access_key) {
+                const new_access_key = Auth.accessKey(access_key);
+                if (new_access_key == access_key) {
+                    $ui.success("设置成功");
+                } else {
+                    $Dialogs.Dialogs.showPlainAlert("设置失败", "未知错误");
+                }
+            } else {
+                $Dialogs.Dialogs.showPlainAlert("空白内容", "请输入Access key");
+            }
+            /* 
             $input.text({
                 type: $kbType.text,
                 placeholder: "输入Access key",
@@ -265,20 +280,14 @@ let $_Cache = require("./data_base").Cache,
                         }
                     }
                 }
-            });
+            }); */
         },
         getMyInfo: Info.myInfo,
         refreshToken: async () => {
             if (await Auth.refreshToken()) {
-                $ui.alert({
-                    title: "刷新成功",
-                    message: "",
-                });
+                $Dialogs.Dialogs.showPlainAlert("刷新成功", "~");
             } else {
-                $ui.alert({
-                    title: "刷新失败",
-                    message: "",
-                });
+                $Dialogs.Dialogs.showPlainAlert("刷新失败", "!");
             }
         },
         getCookiesByAccessKey: Auth.getCookiesByAccessKey
