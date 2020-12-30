@@ -1,5 +1,7 @@
 let $B_user = require("./user"),
     $_Static = require("./static"),
+    $$ = require("$$"),
+    $$Dialogs = require("./libs/dialogs"),
     User = {
         checkIn: async () => {
             const accessKey = $B_user.Auth.accessKey(),
@@ -13,9 +15,11 @@ let $B_user = require("./user"),
                     "Content-Type": "application/x-www-form-urlencoded",
                     "User-Agent": $_Static.UA.COMIC.CHECK_IN
                 };
+            $console.warn(accessKey);
+            $console.warn(uid);
             if (accessKey && uid) {
                 $ui.loading(true);
-                const httpPost = await $_Static.Http.postAwait(
+                const httpPost = await $$.Http.postAwait(
                     $_Static.URL.COMIC.CHECK_IN,
                     postBody,
                     postHeader
@@ -23,48 +27,29 @@ let $B_user = require("./user"),
                 if (httpPost.error) {
                     $ui.loading(false);
                     $console.error(httpPost.error);
+                    $$Dialogs.Dialogs.showPlainAlert("签到失败", "网络请求发生错误");
                 } else {
                     var checkInData = httpPost.data;
                     $console.info(checkInData);
                     $ui.loading(false);
                     if (checkInData) {
                         if (checkInData.code == 0) {
-                            $ui.alert({
-                                title: "签到结果",
-                                message: "签到成功"
-                            });
+                            $$Dialogs.Dialogs.showPlainAlert("签到结果", "签到成功");
                         } else {
                             switch (checkInData.code) {
                                 case "invalid_argument":
-                                    $ui.alert({
-                                        title: `错误`,
-                                        message: "今天已签到"
-                                    });
+                                    $$Dialogs.Dialogs.showPlainAlert("签到结果", "今天已签到");
                                     break;
                                 default:
-                                    $ui.alert({
-                                        title: `错误：${checkInData.code}`,
-                                        message: checkInData.msg
-                                    });
+                                    $$Dialogs.Dialogs.showPlainAlert("错误：${checkInData.code}", checkInData.msg);
                             }
                         }
                     } else {
-                        $ui.alert({
-                            title: "签到失败",
-                            message: "服务器返回空白结果"
-                        });
+                        $$Dialogs.Dialogs.showPlainAlert("签到失败", "服务器返回空白结果");
                     }
                 }
             } else {
-                $ui.alert({
-                    title: "哔哩哔哩漫画签到失败",
-                    message: "未登录",
-                    actions: [{
-                        title: "OK",
-                        disabled: false, // Optional
-                        handler: function () {}
-                    }]
-                });
+                $$Dialogs.Dialogs.showPlainAlert("签到失败", "未登录");
             }
         }
     };

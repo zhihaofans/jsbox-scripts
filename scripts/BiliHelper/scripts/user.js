@@ -1,4 +1,4 @@
-let $_Cache = require("./data_base").Cache,
+let $DB = require("./data_base"),
     $_Static = require("./static"),
     $$ = require("$$"),
     $Dialogs = require("./libs/dialogs"),
@@ -8,7 +8,7 @@ let $_Cache = require("./data_base").Cache,
                 headers = {
                     "user-agent": $_Static.UA.KAAASS.KAAASS
                 };
-            const $_get = await $_Static.Http.getAwait(url, headers);
+            const $_get = await $$.Http.getAwait(url, headers);
             if ($_get.error) {
                 $console.error($_get.error.message);
                 return undefined;
@@ -22,7 +22,7 @@ let $_Cache = require("./data_base").Cache,
                 headers = {
                     "user-agent": $_Static.UA.KAAASS.KAAASS
                 };
-            const $_get = await $_Static.Http.getAwait(url, headers);
+            const $_get = await $$.Http.getAwait(url, headers);
             if ($_get.error) {
                 $console.error($_get.error.message);
                 return undefined;
@@ -36,21 +36,21 @@ let $_Cache = require("./data_base").Cache,
         },
         accessKey: (access_key = undefined) => {
             if (access_key) {
-                $_Cache.accessKey(access_key);
+                $DB.Cache.accessKey(access_key);
             }
-            return $_Cache.accessKey();
+            return $DB.Cache.accessKey();
         },
         uid: (uid = undefined) => {
             if (uid) {
-                $_Cache.uid(uid);
+                $DB.Cache.uid(uid);
             }
-            return $_Cache.uid();
+            return $DB.Cache.uid();
         },
         cookies: (cookies = undefined) => {
             if (cookies) {
-                $_Cache.cookies(cookies);
+                $DB.Cache.cookies(cookies);
             }
-            return $_Cache.cookies();
+            return $DB.Cache.cookies();
         },
         refreshToken: async () => {
             $ui.loading(true);
@@ -81,13 +81,16 @@ let $_Cache = require("./data_base").Cache,
                     headers = {
                         "user-agent": $_Static.UA.KAAASS.KAAASS
                     },
-                    $_get = await $_Static.Http.getAwait(url, headers);
-                $console.info($_get);
+                    $_get = await $$.Http.getAwait(url, headers);
+                $console.warn(url);
+                $console.warn(headers);
+                $console.warn($_get);
                 $ui.loading(false);
                 if ($_get.error) {
                     $console.error($_get.error.message);
                     return undefined;
                 } else {
+                    $ui.loading(false);
                     if ($_get.data.status == "OK") {
                         const userCookies = $_get.data.cookie;
                         if (userCookies) {
@@ -95,32 +98,33 @@ let $_Cache = require("./data_base").Cache,
                             return userCookies;
                         } else {
                             $ui.error("获取饼干失败");
-                            return undefined;
                         }
                     }
                 }
-            } else {
-                return undefined;
             }
+            return undefined;
         }
     },
     Info = {
         getMyInfoByKaaass: async () => {
+            $ui.loading(true);
             const access_key = Auth.accessKey();
             if (access_key) {
-                const url = `${$_Static.URL.KAAASS.MY_INFO}?furtherInfo=true&access_key=${access_key}`,
+                const url = `${$_Static.URL.KAAASS.MY_INFO}?access_key=${access_key}`,
                     headers = {
                         "user-agent": $_Static.UA.KAAASS.KAAASS
                     },
-                    $_get = await $_Static.Http.getAwait(url, headers);
-                $console.error($_get);
+                    $_get = await $$.Http.getAwait(url, headers);
                 if ($_get.error) {
+                    $ui.loading(false);
                     $console.error($_get.error.message);
                     return undefined;
                 } else {
                     const kaaassData = $_get.data;
                     if (kaaassData.status == "OK") {
                         const myInfoData = kaaassData.info;
+                        Auth.uid(myInfoData.mid);
+                        $ui.loading(false);
                         $ui.alert({
                             title: "结果",
                             message: myInfoData,
@@ -282,7 +286,13 @@ let $_Cache = require("./data_base").Cache,
                 }
             }); */
         },
-        getMyInfo: Info.myInfo,
+        getMyInfo: async () => {
+            if (await Info.getMyInfoByKaaass()) {
+
+            } else {
+                $Dialogs.Dialogs.showPlainAlert("获取个人信息失败", "!");
+            }
+        },
         refreshToken: async () => {
             if (await Auth.refreshToken()) {
                 $Dialogs.Dialogs.showPlainAlert("刷新成功", "~");
@@ -290,7 +300,9 @@ let $_Cache = require("./data_base").Cache,
                 $Dialogs.Dialogs.showPlainAlert("刷新失败", "!");
             }
         },
-        getCookiesByAccessKey: Auth.getCookiesByAccessKey
+        getCookiesByAccessKey: async () => {
+            await Auth.getCookiesByAccessKey();
+        }
     };
 module.exports = {
     Auth,

@@ -29,20 +29,8 @@ let UA = {
             CHECK_IN: "https://manga.bilibili.com/twirp/activity.v1.Activity/ClockIn",
             COMIC_DETAIL: "https://manga.bilibili.com/twirp/comic.v1.Comic/ComicDetail"
         },
-    },
-    getApiJson = () => {
-        try {
-            const fileData = $file.read("/assets/bilibili/api.json");
-            return JSON.parse(fileData);
-        } catch (_error) {
-            $console.error(_error);
-            return undefined;
-        }
-    },
-    Http = require("$$");
+    };
 module.exports = {
     UA,
-    URL,
-    getApiJson,
-    Http
+    URL
 };

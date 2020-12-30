@@ -20,24 +20,24 @@ let $$View = require("./view"),
                         switch (indexPath.section) {
                             case 0:
                                 switch (indexPath.row) {
-                                     case 0:
+                                    case 0:
                                         $$View.User.updateAccessKey();
                                         break;
                                     case 1:
-                                        //$$View.CheckIn();
+                                        $$View.CheckIn();
                                         break;
                                     case 2:
-                                        //$$View.User.getMyInfo();
+                                        $$View.User.getMyInfo();
                                         break;
                                     case 3:
                                         $$View.User.refreshToken();
                                         break;
                                     case 4:
-                                        $$View.User.getCookiesByAccessKey();
-                                        break; 
+                                        // $$View.User.getCookiesByAccessKey();
+                                        break;
                                     default:
                                         // $ui.error("暂不支持");
-                                        $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持")
+                                        $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持");
                                 }
                                 break;
                             case 1:
@@ -47,12 +47,12 @@ let $$View = require("./view"),
                                         break;
                                     default:
                                         // $ui.error("暂不支持");
-                                        $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持")
+                                        $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持");
                                 }
                                 break;
                             default:
                                 // $ui.error("暂不支持");
-                                $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持")
+                                $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持");
 
                         }
                     }

@@ -1,5 +1,6 @@
 let $B_user = require("./user"),
     $_Static = require("./static"),
+    $$ = require("$$"),
     User = {
         checkIn: async () => {
             $ui.loading(true);
@@ -7,7 +8,7 @@ let $B_user = require("./user"),
                     "User-Agent": $_Static.UA.USER.APP_IPHONE,
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                httpGet = await $_Static.Http.getAwait(
+                httpGet = await $$.Http.getAwait(
                     $_Static.URL.LIVE.CHECK_IN + $B_user.Auth.accessKey(),
                     header
                 );
@@ -23,38 +24,32 @@ let $B_user = require("./user"),
                         $ui.alert({
                             title: "签到成功",
                             message: data.message || "签到成功",
-                            actions: [
-                                {
-                                    title: "OK",
-                                    disabled: false, // Optional
-                                    handler: function () {}
-                                }
-                            ]
+                            actions: [{
+                                title: "OK",
+                                disabled: false, // Optional
+                                handler: function () {}
+                            }]
                         });
                     } else {
                         $ui.alert({
                             title: `错误代码${data.code}`,
                             message: data.message || "未返回错误信息",
-                            actions: [
-                                {
-                                    title: "OK",
-                                    disabled: false, // Optional
-                                    handler: function () {}
-                                }
-                            ]
+                            actions: [{
+                                title: "OK",
+                                disabled: false, // Optional
+                                handler: function () {}
+                            }]
                         });
                     }
                 } else {
                     $ui.alert({
                         title: "签到失败",
                         message: "返回空白数据",
-                        actions: [
-                            {
-                                title: "OK",
-                                disabled: false, // Optional
-                                handler: function () {}
-                            }
-                        ]
+                        actions: [{
+                            title: "OK",
+                            disabled: false, // Optional
+                            handler: function () {}
+                        }]
                     });
                 }
             }
@@ -70,7 +65,7 @@ let $B_user = require("./user"),
                 };
             $console.info(postHeader);
             $console.info(postBody);
-            const httpPost = await $_Static.Http.postAwait(
+            const httpPost = await $$.Http.postAwait(
                 $_Static.URL.LIVE.SILVER_TO_COIN,
                 postBody,
                 postHeader
@@ -85,8 +80,7 @@ let $B_user = require("./user"),
                     const silver2coinData = httpPost.data;
                     if (silver2coinData.code == 0) {
                         $ui.alert({
-                            title:
-                                silver2coinData.data.message ||
+                            title: silver2coinData.data.message ||
                                 silver2coinData.data.msg ||
                                 "兑换成功",
                             message: `剩余银瓜子：${silver2coinData.data.silver}\n得到硬币：${silver2coinData.data.coin}`
@@ -94,8 +88,7 @@ let $B_user = require("./user"),
                     } else {
                         $ui.alert({
                             title: `错误代码${silver2coinData.code}`,
-                            message:
-                                silver2coinData.message ||
+                            message: silver2coinData.message ||
                                 silver2coinData.msg ||
                                 "未知错误"
                         });
