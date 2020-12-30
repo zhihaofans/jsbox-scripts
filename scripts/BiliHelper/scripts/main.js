@@ -20,21 +20,21 @@ let $$View = require("./view"),
                         switch (indexPath.section) {
                             case 0:
                                 switch (indexPath.row) {
-                                    /* case 0:
-                                        $$view.User.updateAccessKey();
+                                     case 0:
+                                        $$View.User.updateAccessKey();
                                         break;
                                     case 1:
-                                        $$view.CheckIn();
+                                        //$$View.CheckIn();
                                         break;
                                     case 2:
-                                        $$view.User.getMyInfo();
+                                        //$$View.User.getMyInfo();
                                         break;
                                     case 3:
-                                        $$view.User.refreshToken();
+                                        //$$View.User.refreshToken();
                                         break;
                                     case 4:
-                                        $$view.User.getCookiesByAccessKey();
-                                        break; */
+                                        //$$View.User.getCookiesByAccessKey();
+                                        break; 
                                     default:
                                         // $ui.error("暂不支持");
                                         $$Dialogs.Dialogs.showPlainAlert("错误!", "暂不支持")
