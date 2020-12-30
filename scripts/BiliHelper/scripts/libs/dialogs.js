@@ -14,12 +14,12 @@ let plainAlert = require("./JSBoxDialogs/dialogs/plainAlert"),
                 message: message
             });
         },
-        showInputAlert: async (title) => {
+        showInputAlert: async title => {
             return await inputAlert({
                 title: title
             });
         },
-        showLoginAlert: async (title) => {
+        showLoginAlert: async title => {
             return await loginAlert({
                 title: title
             });
@@ -30,7 +30,13 @@ let plainAlert = require("./JSBoxDialogs/dialogs/plainAlert"),
                 message: message
             });
         },
-        showListDialogs: async (title, items, values, multiSelectEnabled = true, editable = true) => {
+        showListDialogs: async (
+            title,
+            items,
+            values,
+            multiSelectEnabled = true,
+            editable = true
+        ) => {
             return await listDialogs({
                 title: title,
                 items: items,
@@ -41,11 +47,6 @@ let plainAlert = require("./JSBoxDialogs/dialogs/plainAlert"),
         }
     };
 module.exports = {
-    plainAlert,
-    inputAlert,
-    loginAlert,
-    textDialogs,
-    listDialogs,
     editListDialogs,
     formDialogs,
     Dialogs
