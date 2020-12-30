@@ -1,7 +1,7 @@
 let Cache = {
-    ACCESS_KEY: "MOD_BILIBILI_ACCESS_KEY",
-    UID: "MOD_BILIBILI_UID",
-    COOKIES: "MOD_BILIBILI_COOKIES",
+    ACCESS_KEY: "USER_AUTH_ACCESS_KEY",
+    UID: "USER_AUTH_UID",
+    COOKIES: "USER_AUTH_COOKIES",
     accessKey: (access_key = undefined) => {
         if (access_key) {
             $cache.set(Cache.ACCESS_KEY, access_key);

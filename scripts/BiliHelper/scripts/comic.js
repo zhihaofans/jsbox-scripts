@@ -15,7 +15,7 @@ let $B_user = require("./user"),
                 };
             if (accessKey && uid) {
                 $ui.loading(true);
-                const httpPost = await $_Static.HTTP.postAwait(
+                const httpPost = await $_Static.Http.postAwait(
                     $_Static.URL.COMIC.CHECK_IN,
                     postBody,
                     postHeader

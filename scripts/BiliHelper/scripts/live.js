@@ -7,7 +7,7 @@ let $B_user = require("./user"),
                     "User-Agent": $_Static.UA.USER.APP_IPHONE,
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                httpGet = await $_Static.HTTP.getAwait(
+                httpGet = await $_Static.Http.getAwait(
                     $_Static.URL.LIVE.CHECK_IN + $B_user.Auth.accessKey(),
                     header
                 );
@@ -70,7 +70,7 @@ let $B_user = require("./user"),
                 };
             $console.info(postHeader);
             $console.info(postBody);
-            const httpPost = await $_Static.HTTP.postAwait(
+            const httpPost = await $_Static.Http.postAwait(
                 $_Static.URL.LIVE.SILVER_TO_COIN,
                 postBody,
                 postHeader

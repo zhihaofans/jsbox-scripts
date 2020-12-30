@@ -39,10 +39,10 @@ let UA = {
             return undefined;
         }
     },
-    HTTP = require("../../libs/http");
+    Http = require("$$");
 module.exports = {
     UA,
     URL,
     getApiJson,
-    HTTP
+    Http
 };

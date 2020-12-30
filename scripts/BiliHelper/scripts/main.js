@@ -30,10 +30,10 @@ let $$View = require("./view"),
                                         //$$View.User.getMyInfo();
                                         break;
                                     case 3:
-                                        //$$View.User.refreshToken();
+                                        $$View.User.refreshToken();
                                         break;
                                     case 4:
-                                        //$$View.User.getCookiesByAccessKey();
+                                        $$View.User.getCookiesByAccessKey();
                                         break; 
                                     default:
                                         // $ui.error("暂不支持");
