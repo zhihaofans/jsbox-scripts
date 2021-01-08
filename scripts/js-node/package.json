@@ -1,0 +1,12 @@
+{
+  "name": "js-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bili-api": "^1.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": ""
+}
