@@ -172,7 +172,55 @@ let Http = {
             }
         }
     },
-    ModV3 = {},
+    ModV3 = {
+        loadIndexJs: filePath => {
+            const indexJsDemo = {
+                title: "ModV3",
+                modDir: "./mods/",
+                mods: [
+                    {
+                        modId: "demo",
+                        modAction: "init",
+                        modTitle: "ModV3的Demo"
+                    }
+                ]
+            };
+            return require(filePath);
+        },
+        loadMod: (modDir, modInfo) => {
+            require(modDir + modInfo.modId)[modInfo.modAction]();
+        },
+        showModList: indexJs => {
+            const modDir = indexJs.modDir,
+                mods = indexJs.mods,
+                modListTitle = indexJs.title;
+            $ui.push({
+                props: {
+                    title: ""
+                },
+                views: [
+                    {
+                        type: "list",
+                        props: {
+                            data: [
+                                {
+                                    title: "Section 0",
+                                    rows: ["0-0", "0-1", "0-2"]
+                                }
+                            ]
+                        },
+                        layout: $layout.fill,
+                        events: {
+                            didSelect: function (_sender, indexPath, _data) {
+                                const section = indexPath.section;
+                                const row = indexPath.row;
+                            }
+                        }
+                    }
+                ]
+            });
+        }
+    },
     Str = {
         copy: str => {
             $clipboard.copy({
@@ -247,12 +295,35 @@ let Http = {
                 return false;
             }
         }
+    },
+    ListView = {
+        pushListView: (title, listData, didSelect) => {
+            $ui.push({
+                props: {
+                    title: title
+                },
+                views: [
+                    {
+                        type: "list",
+                        props: {
+                            data: listData
+                        },
+                        layout: $layout.fill,
+                        events: {
+                            didSelect: didSelect
+                        }
+                    }
+                ]
+            });
+        }
     };
 module.exports = {
     Http,
     ModV1,
     ModV2,
+    ModV3,
     Str,
     Image,
-    File
+    File,
+    ListView
 };
