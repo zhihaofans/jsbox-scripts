@@ -185,7 +185,7 @@ let Http = {
                     }
                 ]
             };
-            return require(filePath);
+            return filePath ? require(filePath) : indexJsDemo;
         },
         loadMod: (modDir, modInfo) => {
             require(modDir + modInfo.modId)[modInfo.modAction]();
@@ -193,32 +193,16 @@ let Http = {
         showModList: indexJs => {
             const modDir = indexJs.modDir,
                 mods = indexJs.mods,
-                modListTitle = indexJs.title;
-            $ui.push({
-                props: {
-                    title: ""
-                },
-                views: [
-                    {
-                        type: "list",
-                        props: {
-                            data: [
-                                {
-                                    title: "Section 0",
-                                    rows: ["0-0", "0-1", "0-2"]
-                                }
-                            ]
-                        },
-                        layout: $layout.fill,
-                        events: {
-                            didSelect: function (_sender, indexPath, _data) {
-                                const section = indexPath.section;
-                                const row = indexPath.row;
-                            }
-                        }
-                    }
-                ]
-            });
+                modListTitle = indexJs.title,
+                listEvent = (_sender, indexPath, _data) => {
+                    const thisMod = mods[indexPath.row];
+                    this.loadMod(modDir, thisMod);
+                };
+            View.pushListView(
+                modListTitle,
+                mods.map(m => m.modTitle),
+                listEvent
+            );
         }
     },
     Str = {
@@ -296,7 +280,7 @@ let Http = {
             }
         }
     },
-    ListView = {
+    View = {
         pushListView: (title, listData, didSelect) => {
             $ui.push({
                 props: {
@@ -325,5 +309,5 @@ module.exports = {
     Str,
     Image,
     File,
-    ListView
+    View
 };
