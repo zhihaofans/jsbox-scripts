@@ -1,4 +1,5 @@
-let Http = {
+let __VERSION__ = 1,
+    Http = {
         getAwait: async (url, header) => {
             const result = await $http.get({
                 url: url,
@@ -302,6 +303,7 @@ let Http = {
         }
     };
 module.exports = {
+    __VERSION__,
     Http,
     ModV1,
     ModV2,
