@@ -136,7 +136,8 @@ let adaoThread = t => {
     $app.openURL(`adnmb://t/${t}`);
 };
 
-let Browser = {
+const __VERSION__ = 1,
+    Browser = {
         AlookBrowser: {
             Open: url => {
                 $app.openURL(`Alook://${$text.URLEncode(url)}`);
@@ -269,6 +270,7 @@ module.exports = {
     adaoThread,
     bilibiliSpace,
     bilibiliApp,
+    __VERSION__,
     Browser,
     Video,
     Social
