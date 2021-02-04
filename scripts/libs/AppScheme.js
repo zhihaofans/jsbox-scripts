@@ -224,8 +224,22 @@ let Browser = {
     Social = {
         adaoThread: t => {
             $app.openURL(`adnmb://t/${t}`);
+        },
+        v2er: {
+            topic: _t => {
+                $app.openURL(`v2er://topic?id=${_t}`);
+            },
+            node: _node => {
+                $app.openURL(`v2er://node?title=${_node}`);
+            },
+            member: _uid => {
+                $app.openURL(`v2er://member?username=${_uid}`);
+            },
+            search: _key => {
+                $app.openURL(`v2er://search?query=${_key}`);
+            }
         }
-    }
+    };
 module.exports = {
     alookBrowserOpen,
     chromeBrowserOpen,
