@@ -1,8 +1,6 @@
 const $Social = require("./lib").appScheme.Social,
     v2er = {
-        init: _url => {
-          if()
-        },
+        init: _url => {},
         topic: _t => {
             $Social.v2er.topic(_t);
         },
