@@ -158,6 +158,13 @@ function plainAlert({
         }
     });
 }
+const showPlainAlert = async (title, message) => {
+    return await plainAlert({
+        title: title,
+        message: message
+    });
+};
 module.exports = {
-    plainAlert
+    plainAlert,
+    showPlainAlert
 };
