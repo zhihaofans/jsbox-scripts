@@ -61,6 +61,8 @@ const Url = {
                     }
                 }
             });
+        } else {
+            queryObj = undefined;
         }
         const regex = /(.+):\/\/(.+?)\/(.+)/,
             matches = regex.exec(_inputUrl);
@@ -71,7 +73,7 @@ const Url = {
                 urlResult = {
                     scheme: scheme,
                     host: host,
-                    path: path,
+                    path: path.startsWith("/") ? path : `/${path}`,
                     fragment: fragment,
                     query: queryObj,
                     queryStr: queryStr
