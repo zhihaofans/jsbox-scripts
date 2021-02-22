@@ -78,7 +78,6 @@ const Url = {
                 };
             return urlResult;
         } else {
-            
             return matches || undefined;
         }
     },
@@ -96,8 +95,6 @@ const Url = {
     }
 };
 module.exports = {
-    ModV4
+    ModV4,
+    Url
 };
-$console.info(
-    Url.regex("https://aaa.github.com/hahaha/hshsb/?aaa=bb&ccc=sjsh#shshs")
-);
