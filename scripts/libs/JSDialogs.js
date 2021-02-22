@@ -6,7 +6,7 @@ const l10nRes = {
     }
 };
 function $$l10n(str_id) {
-    var result = "";
+    let result = "";
     if (str_id) {
         const str_res = l10nRes[str_id];
         if (str_res) {
@@ -29,7 +29,6 @@ const UIAlertActionStyle = {
         ActionSheet: 0,
         Alert: 1
     };
-
 class UIAlertAction {
     constructor(title, style = UIAlertActionStyle.Default, handler) {
         this.title = title;
@@ -59,11 +58,9 @@ class UIAlertController {
             style
         );
     }
-
     addAction(action) {
         this.instance.$addAction(action.instance);
     }
-
     addTextField(options) {
         this.instance.$addTextFieldWithConfigurationHandler(
             $block("void, UITextField *", textField => {
@@ -132,7 +129,6 @@ function plainAlert({
             message,
             UIAlertControllerStyle.Alert
         );
-
         alertVC.addAction(
             new UIAlertAction(
                 cancelText,
@@ -148,23 +144,82 @@ function plainAlert({
             )
         );
         alertVC.present();
-
         function confirmEvent() {
             resolve("ok");
         }
-
         function cancelEvent() {
             reject("cancel");
         }
     });
 }
-const showPlainAlert = async (title, message) => {
-    return await plainAlert({
-        title: title,
-        message: message
+function inputAlert({
+    title = "",
+    message,
+    text = "",
+    placeholder,
+    type = 0,
+    cancelText = $$l10n("CANCEL"),
+    confirmText = $$l10n("OK")
+} = {}) {
+    return new Promise((resolve, reject) => {
+        const alertVC = new UIAlertController(
+            title,
+            message,
+            UIAlertControllerStyle.Alert
+        );
+        alertVC.addTextField({
+            placeholder,
+            text,
+            type,
+            events: {
+                shouldReturn: () => {
+                    const input = alertVC.getText(0);
+                    const isValid = input.length > 0;
+                    return isValid;
+                }
+            }
+        });
+        alertVC.addAction(
+            new UIAlertAction(
+                cancelText,
+                UIAlertActionStyle.Destructive,
+                cancelEvent
+            )
+        );
+        alertVC.addAction(
+            new UIAlertAction(
+                confirmText,
+                UIAlertActionStyle.Default,
+                confirmEvent
+            )
+        );
+        alertVC.present();
+        function confirmEvent() {
+            const input = alertVC.getText(0);
+            resolve(input);
+        }
+        function cancelEvent() {
+            reject("cancel");
+        }
     });
-};
+}
+//Usage
+const showPlainAlert = async (title, message) => {
+        return await plainAlert({
+            title: title,
+            message: message
+        });
+    },
+    showInputAlert = async (title, message = "", text = "") => {
+        return await inputAlert({
+            title: title,
+            message: message,
+            text: text
+        });
+    };
 module.exports = {
     plainAlert,
-    showPlainAlert
+    showPlainAlert,
+    inputAlert,
+    showInputAlert
 };
