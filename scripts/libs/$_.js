@@ -3,7 +3,7 @@ class ModV4 {
         this._indexJsPath = indexJsPath;
     }
     get indexJs() {
-        const _f = $$.File;
+        const _f = require("$$").File;
         return this._indexJsPath
             ? _f.isFile(this.vindexJsPath)
                 ? require(this._indexJsPath) || undefined
@@ -88,14 +88,6 @@ const $$ = require("$$"),
                 return urlResult;
             } else {
                 return matches || undefined;
-            }
-        },
-        split: _inputUrl => {
-            if (Url.isUrl(_inputUrl)) {
-                //        const schemeSymbol;
-                return {};
-            } else {
-                return undefined;
             }
         },
         isUrl: _inputUrl => {
