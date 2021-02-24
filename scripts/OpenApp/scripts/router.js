@@ -1,4 +1,5 @@
-const JSDialogs = require("./scripts/libs/dialogs").Dialogs,
+const JSDialogs = require("JSDialogs"),
+    $_Url = require("$_").Url,
     app = {
         "v2er.topic": {
             type: "social",
@@ -16,35 +17,41 @@ const JSDialogs = require("./scripts/libs/dialogs").Dialogs,
     },
     checkRouter = async _url => {
         try {
-            const _u = new URL(_url);
-            const host = _u.hostname,
-                pathname = _u.pathname;
+            const _u = $_Url.regex(_url),
+                host = _u.host,
+                pathname = _u.path;
             $console.warn(_url);
-            $console.error(_u.toString());
+            $console.error(_u);
             if (url[host]) {
                 let pathList = Object.keys(url[host]),
-                    itemKey = undefined,
+                    itemKey = "",
+                    routerPath = "",
                     i = 0;
                 do {
                     const thisItem = pathList[i];
                     if (pathname.startsWith(thisItem)) {
+                        routerPath = thisItem;
                         itemKey = url[host][thisItem];
                     }
                     i += 1;
-                } while (itemKey == undefined);
-                return itemKey;
+                } while (itemKey == "" && i < pathList.length);
+                return {
+                    routerKey: itemKey,
+                    routerPath: routerPath
+                };
             } else {
                 return undefined;
             }
         } catch (_error) {
             $console.error(_error.message);
-            await JSDialogs.showPlainAlert("try catch", _error.message);
+            await JSDialogs.showPlainAlert("Line 42:try catch", _error.message);
             return undefined;
         }
     },
-    goRouter = (routerId, _url) => {
+    goRouter = (routerId, _url, routerPath) => {
         if (routerId && _url) {
-            const routerData = app[routerId];
+            const _url = $_Url.regex(_url),
+                routerData = app[routerId];
             if (routerData) {
                 const jsPath = `/scripts/${routerData.type}.js`;
                 if ($file.exists(jsPath)) {
@@ -58,11 +65,13 @@ const JSDialogs = require("./scripts/libs/dialogs").Dialogs,
             }
         }
     },
-    init = _url => {
-        const routerKey = checkRouter(_url);
-        if (routerKey) {
-            $console.info(`routerKey:${routerKey}`);
-            goRouter(routerKey, _url);
+    init = async _url => {
+        const routerData = await checkRouter(_url);
+        if (routerData && routerData.routerKey) {
+            $console.info(
+                `routerKey:${routerData.routerKey}\nrouterPath:${routerData.routerPath}`
+            );
+            goRouter(routerData.routerKey, _url, routerData.routerPath);
         } else {
             $ui.error("找不到支持该链接的路由");
         }

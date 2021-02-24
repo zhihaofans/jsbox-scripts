@@ -1,20 +1,25 @@
-const JSDialogs = require("./scripts/libs/dialogs"),
-    app = require("./scripts/app"),
-    init = () => {
+const JSDialogs = require("JSDialogs"),
+    router = require("./scripts/router"),
+    init = async () => {
         const shareLink = $context.link;
         if (shareLink) {
-            app.goApp(shareLink);
+            await JSDialogs.showPlainAlert("分享链接", shareLink);
+            router.init(shareLink);
         } else {
             inputUrl();
         }
     },
     inputUrl = async () => {
-        const inputValve = await JSDialogs.Dialogs.showInputAlert("请输入链接");
+        const inputValve = await JSDialogs.showInputAlert(
+            "请输入链接",
+            "",
+            "https://v2ex.com/t/57151"
+        );
         if (inputValve) {
-            JSDialogs.Dialogs.showPlainAlert("输入内容", inputValve);
-            app.goApp(inputValve);
+            await JSDialogs.showPlainAlert("输入内容", inputValve);
+            router.init(inputValve);
         } else {
-            JSDialogs.Dialogs.showPlainAlert("错误！", "请输入内容");
+            JSDialogs.showPlainAlert("错误！", "请输入内容");
         }
     };
 init();
