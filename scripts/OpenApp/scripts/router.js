@@ -1,5 +1,11 @@
 const JSDialogs = require("JSDialogs"),
     $_Url = require("$_").Url,
+    routerRegex = [
+        {
+            routerId: "v2er.topic",
+            routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/t\/(.+)/
+        }
+    ],
     app = {
         "v2er.topic": {
             type: "social",
@@ -13,6 +19,23 @@ const JSDialogs = require("JSDialogs"),
         },
         "v2ex.com": {
             "/t/": "v2er.topic"
+        }
+    },
+    checkRouterByRegex = _inputUrl => {
+        if (_inputUrl) {
+            const matchResult = [];
+            routerRegex.map(i => {
+                const regexMatches = i.routerRegex.exec(_inputUrl);
+                if (regexMatches) {
+                    matchResult.push({
+                        routerId: i.routerId,
+                        regexMatch: regexMatches
+                    });
+                }
+            });
+            return matchResult;
+        } else {
+            return undefined;
         }
     },
     checkRouter = async _url => {
@@ -48,15 +71,15 @@ const JSDialogs = require("JSDialogs"),
             return undefined;
         }
     },
-    goRouter = (routerId, _url, routerPath) => {
-        if (routerId && _url) {
-            const _url = $_Url.regex(_url),
-                routerData = app[routerId];
+    goRouter = (routerId, _routerValue) => {
+        $console.error(`routerId:${routerId}\nvalue:${_routerValue}`);
+        if (routerId && _routerValue) {
+            const routerData = app[routerId];
             if (routerData) {
                 const jsPath = `/scripts/${routerData.type}.js`;
                 if ($file.exists(jsPath)) {
                     const routerJs = require(jsPath);
-                    routerJs[routerData.app][routerData.func](_url);
+                    routerJs[routerData.app][routerData.func](_routerValue);
                 } else {
                     JSDialogs.showPlainAlert("不存在该文件", jsPath);
                 }
@@ -66,12 +89,19 @@ const JSDialogs = require("JSDialogs"),
         }
     },
     init = async _url => {
-        const routerData = await checkRouter(_url);
-        if (routerData && routerData.routerKey) {
-            $console.info(
-                `routerKey:${routerData.routerKey}\nrouterPath:${routerData.routerPath}`
-            );
-            goRouter(routerData.routerKey, _url, routerData.routerPath);
+        const routerData = await checkRouterByRegex(_url);
+        if (routerData) {
+            $console.info(routerData);
+            $ui.menu({
+                items: routerData.map(r => r.routerId),
+                handler: (title, idx) => {
+                    const thisRouter = routerData[idx];
+                    goRouter(
+                        thisRouter.routerId,
+                        thisRouter.regexMatch[thisRouter.regexMatch.length - 1]
+                    );
+                }
+            });
         } else {
             $ui.error("找不到支持该链接的路由");
         }
@@ -81,5 +111,6 @@ module.exports = {
     url,
     checkRouter,
     goRouter,
-    init
+    init,
+    checkRouterByRegex
 };

@@ -16,7 +16,6 @@ const JSDialogs = require("JSDialogs"),
             "https://v2ex.com/t/57151"
         );
         if (inputValve) {
-            await JSDialogs.showPlainAlert("输入内容", inputValve);
             router.init(inputValve);
         } else {
             JSDialogs.showPlainAlert("错误！", "请输入内容");
