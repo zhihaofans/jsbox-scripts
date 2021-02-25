@@ -4,6 +4,10 @@ const JSDialogs = require("JSDialogs"),
         {
             routerId: "v2er.topic",
             routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/t\/(.+)/
+        },
+        {
+            routerId: "v2er.member",
+            routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/member\/(.+)/
         }
     ],
     app = {
@@ -11,6 +15,11 @@ const JSDialogs = require("JSDialogs"),
             type: "social",
             app: "v2er",
             func: "topic"
+        },
+        "v2er.member": {
+            type: "social",
+            app: "v2er",
+            func: "member"
         }
     },
     url = {
