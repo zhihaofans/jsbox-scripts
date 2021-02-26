@@ -13,7 +13,13 @@ const $Social = require("./lib").appScheme.Social,
         member: _uid => {
             $Social.v2er.member(_uid);
         }
+    },
+    telegram = {
+        me: _id => {
+            $Social.telegram.me(_id);
+        }
     };
 module.exports = {
-    v2er
+    v2er,
+    telegram
 };

@@ -1,9 +1,11 @@
 const JSDialogs = require("JSDialogs"),
+    $$ = require("$$"),
     router = require("./scripts/router"),
     init = async () => {
         const shareLink = $context.link;
         if (shareLink) {
-            await JSDialogs.showPlainAlert("分享链接", shareLink);
+            // await JSDialogs.showPlainAlert("分享链接", shareLink);
+            $$.Str.copy(shareLink);
             router.init(shareLink);
         } else {
             inputUrl();
@@ -13,7 +15,7 @@ const JSDialogs = require("JSDialogs"),
         const inputValve = await JSDialogs.showInputAlert(
             "请输入链接",
             "",
-            "https://v2ex.com/t/57151"
+            "https://v2ex.com/member/Livid"
         );
         if (inputValve) {
             router.init(inputValve);

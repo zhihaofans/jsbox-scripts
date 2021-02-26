@@ -1,5 +1,4 @@
 const JSDialogs = require("JSDialogs"),
-    $_Url = require("$_").Url,
     routerRegex = [
         {
             routerId: "v2er.topic",
@@ -8,6 +7,10 @@ const JSDialogs = require("JSDialogs"),
         {
             routerId: "v2er.member",
             routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/member\/(.+)/
+        },
+        {
+            routerId: "telegram.me",
+            routerRegex: /https:\/\/t.me\/(.+)/
         }
     ],
     app = {
@@ -20,14 +23,11 @@ const JSDialogs = require("JSDialogs"),
             type: "social",
             app: "v2er",
             func: "member"
-        }
-    },
-    url = {
-        "www.v2ex.com": {
-            "/t/": "v2er.topic"
         },
-        "v2ex.com": {
-            "/t/": "v2er.topic"
+        "telegram.me": {
+            type: "social",
+            app: "telegram",
+            func: "me"
         }
     },
     checkRouterByRegex = _inputUrl => {
@@ -44,39 +44,6 @@ const JSDialogs = require("JSDialogs"),
             });
             return matchResult;
         } else {
-            return undefined;
-        }
-    },
-    checkRouter = async _url => {
-        try {
-            const _u = $_Url.regex(_url),
-                host = _u.host,
-                pathname = _u.path;
-            $console.warn(_url);
-            $console.error(_u);
-            if (url[host]) {
-                let pathList = Object.keys(url[host]),
-                    itemKey = "",
-                    routerPath = "",
-                    i = 0;
-                do {
-                    const thisItem = pathList[i];
-                    if (pathname.startsWith(thisItem)) {
-                        routerPath = thisItem;
-                        itemKey = url[host][thisItem];
-                    }
-                    i += 1;
-                } while (itemKey == "" && i < pathList.length);
-                return {
-                    routerKey: itemKey,
-                    routerPath: routerPath
-                };
-            } else {
-                return undefined;
-            }
-        } catch (_error) {
-            $console.error(_error.message);
-            await JSDialogs.showPlainAlert("Line 42:try catch", _error.message);
             return undefined;
         }
     },
@@ -117,8 +84,6 @@ const JSDialogs = require("JSDialogs"),
     };
 module.exports = {
     app,
-    url,
-    checkRouter,
     goRouter,
     init,
     checkRouterByRegex
