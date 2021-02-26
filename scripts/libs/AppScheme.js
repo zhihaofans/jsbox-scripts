@@ -239,6 +239,11 @@ const __VERSION__ = 1,
             search: _key => {
                 $app.openURL(`v2er://search?query=${_key}`);
             }
+        },
+        telegram: {
+            me: _id => {
+                $app.openURL(`tg://resolve?domain=${_id}`);
+            }
         }
     };
 module.exports = {
