@@ -88,7 +88,7 @@ const JSDialogs = require("JSDialogs"),
     goRouter = (_routerId, _routerValue) => {
         $console.info(`routerId:${_routerId}\nvalue:${_routerValue}`);
         if (_routerId && _routerValue) {
-            const routerData = app[_routerId];
+            const routerData = _routerData[_routerId];
             if (routerData) {
                 const jsPath = `/scripts/${routerData.type}.js`;
                 if ($file.exists(jsPath)) {
