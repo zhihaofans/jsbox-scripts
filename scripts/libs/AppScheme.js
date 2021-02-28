@@ -138,11 +138,11 @@ let adaoThread = t => {
 
 const __VERSION__ = 1,
     Browser = {
-        AlookBrowser: {
-            Open: url => {
+        Alook: {
+            open: url => {
                 $app.openURL(`Alook://${$text.URLEncode(url)}`);
             },
-            Download: url => {
+            download: url => {
                 $app.openURL(`Alook://download/${$text.URLEncode(url)}`);
             }
         },
@@ -198,27 +198,38 @@ const __VERSION__ = 1,
         AVPlayer: url => {
             $app.openURL(`AVPlayer://${$text.URLEncode(url)}`);
         },
-        NPlayerVideo: url => {
+        NPlayer: url => {
             $app.openURL(`nplayer-${url}`);
         },
-        VlcPlayVideo: url => {
+        VlcPlayer: url => {
             $app.openURL(`vlc-x-callback://x-callback-url/ACTION?url=${url}`);
         },
         Bilibili: {
-            bilibiliApp: (mode, id) => {
+            app: (mode, id) => {
                 $app.openURL(`bilibili://${mode}/${id}`);
             },
-            bilibiliVideo: vid => {
+            bideo: vid => {
                 Video.Bilibili.bilibiliApp("video", vid);
             },
-            getBilibiliVideoUrl: vid => {
+            getVideoUrl: vid => {
                 return `bilibili://video/${vid}`;
             },
-            bilibiliLive: roomid => {
+            live: roomid => {
                 Video.Bilibili.bilibiliApp("live", roomid);
             },
-            bilibiliSpace: uid => {
+            space: uid => {
                 Video.Bilibili.bilibiliApp("space", uid);
+            }
+        },
+        Acfun: {
+            video: vid => {
+                $app.openURL(Video.Acfun.getVideoUrl(vid));
+            },
+            getVideoUrl: vid => {
+                return `acfun://detail/video/${vid}`;
+            },
+            getVideoWebUrl: vid => {
+                return `https://www.acfun.cn/v/ac${vid}`;
             }
         }
     },
@@ -243,6 +254,13 @@ const __VERSION__ = 1,
         telegram: {
             me: _id => {
                 $app.openURL(`tg://resolve?domain=${_id}`);
+            }
+        }
+    },
+    File = {
+        Documents: {
+            open: url => {
+                $app.openURL(`r${url}`);
             }
         }
     };
@@ -278,5 +296,6 @@ module.exports = {
     __VERSION__,
     Browser,
     Video,
-    Social
+    Social,
+    File
 };
