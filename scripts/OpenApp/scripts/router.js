@@ -1,47 +1,16 @@
 const JSDialogs = require("JSDialogs"),
-    routerRegex = [
-        {
-            routerId: "v2er.topic",
-            routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/t\/(.+)/
-        },
-        {
-            routerId: "v2er.member",
-            routerRegex: /(http|https):\/\/(www.v2ex|v2ex).com\/member\/(.+)/
-        },
-        {
-            routerId: "telegram.me",
-            routerRegex: /https:\/\/t.me\/(.+)/
-        }
-    ],
-    app = {
-        "v2er.topic": {
-            type: "social",
-            app: "v2er",
-            func: "topic"
-        },
-        "v2er.member": {
-            type: "social",
-            app: "v2er",
-            func: "member"
-        },
-        "telegram.me": {
-            type: "social",
-            app: "telegram",
-            func: "me"
-        }
-    },
     _routerData = {
         "v2er.topic": {
             type: "social",
             app: "v2er",
             func: "topic",
-            regex: /(http|https):\/\/(www.v2ex|v2ex).com\/t\/(.+)/
+            regex: /https:\/\/(www.v2ex|v2ex).com\/t\/(.+)/
         },
         "v2er.member": {
             type: "social",
             app: "v2er",
             func: "member",
-            regex: /(http|https):\/\/(www.v2ex|v2ex).com\/member\/(.+)/
+            regex: /https:\/\/(www.v2ex|v2ex).com\/member\/(.+)/
         },
         "telegram.me": {
             type: "social",
@@ -51,23 +20,6 @@ const JSDialogs = require("JSDialogs"),
         }
     },
     checkRouterByRegex = _inputUrl => {
-        if (_inputUrl) {
-            const matchResult = [];
-            routerRegex.map(i => {
-                const regexMatches = i.routerRegex.exec(_inputUrl);
-                if (regexMatches) {
-                    matchResult.push({
-                        routerId: i.routerId,
-                        regexMatch: regexMatches
-                    });
-                }
-            });
-            return matchResult;
-        } else {
-            return undefined;
-        }
-    },
-    checkRouterByRegexA = _inputUrl => {
         if (_inputUrl) {
             const matchResult = [];
             Object.keys(_routerData).map(i => {
@@ -103,7 +55,7 @@ const JSDialogs = require("JSDialogs"),
         }
     },
     init = async _url => {
-        const routerData = await checkRouterByRegexA(_url);
+        const routerData = await checkRouterByRegex(_url);
         if (routerData) {
             $console.info(routerData);
             $ui.menu({
@@ -121,9 +73,7 @@ const JSDialogs = require("JSDialogs"),
         }
     };
 module.exports = {
-    app,
     goRouter,
     init,
-    checkRouterByRegex,
-    checkRouterByRegexA
+    checkRouterByRegex
 };
