@@ -235,6 +235,9 @@ let __VERSION__ = 2,
                 return linkList.length == 1 && linkList[0] == str;
             }
             return false;
+        },
+        getListFromL10n: sourceList => {
+            return sourceList.map(x => $l10n(x));
         }
     },
     Image = {
@@ -359,14 +362,14 @@ let __VERSION__ = 2,
         }
     };
 module.exports = {
-    __VERSION__,
-    Http,
-    ModV1,
-    ModV2,
-    ModV3,
-    Str,
-    Image,
-    File,
-    View,
-    Url
+    __VERSION__: __VERSION__,
+    Http: Http,
+    ModV1: ModV1,
+    ModV2: ModV2,
+    ModV3: ModV3,
+    Str: Str,
+    Image: Image,
+    File: File,
+    View: View,
+    Url: Url
 };
