@@ -360,6 +360,19 @@ let __VERSION__ = 2,
             const _urlResult = Url.getUrlByRegex(_inputUrl);
             return _urlResult ? _urlResult.host && _urlResult.scheme : false;
         }
+    },
+    Time = {
+        getNowUnixTime: () => {
+            return new Date().getTime();
+        },
+        getNowUnixTimeSecond: () => {
+            return Math.round(new Date().getTime() / 1000);
+        },
+        iso8601ToLocaltime: ISO8601 => {
+            const moment = require("moment");
+            var timezone = '"Asia/Shanghai';
+            moment(ISO8601).tz(timezone).format("YYYY-MM-DD hh:mm:ss");
+        }
     };
 module.exports = {
     __VERSION__: __VERSION__,
@@ -371,5 +384,6 @@ module.exports = {
     Image: Image,
     File: File,
     View: View,
-    Url: Url
+    Url: Url,
+    Time: Time
 };
