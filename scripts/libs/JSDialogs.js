@@ -5,6 +5,7 @@ const l10nRes = {
         en: "Cancel"
     }
 };
+
 function $$l10n(str_id) {
     let result = "";
     if (str_id) {
@@ -144,14 +145,17 @@ function plainAlert({
             )
         );
         alertVC.present();
+
         function confirmEvent() {
             resolve("ok");
         }
+
         function cancelEvent() {
             reject("cancel");
         }
     });
 }
+
 function inputAlert({
     title = "",
     message,
@@ -194,10 +198,72 @@ function inputAlert({
             )
         );
         alertVC.present();
+
         function confirmEvent() {
             const input = alertVC.getText(0);
             resolve(input);
         }
+
+        function cancelEvent() {
+            reject("cancel");
+        }
+    });
+}
+
+function loginAlert({
+    title = "",
+    message,
+    placeholder1,
+    placeholder2,
+    cancelText = $$l10n("CANCEL"),
+    confirmText = $$l10n("OK")
+} = {}) {
+    return new Promise((resolve, reject) => {
+        const alertVC = new UIAlertController(
+            title,
+            message,
+            UIAlertControllerStyle.Alert
+        );
+        alertVC.addTextField({
+            placeholder: placeholder1
+        });
+        alertVC.addTextField({
+            placeholder: placeholder2,
+            secure: true,
+            events: {
+                shouldReturn: () => {
+                    const username = alertVC.getText(0);
+                    const password = alertVC.getText(1);
+                    const isValid = username.length > 0 && password.length > 0;
+                    return isValid;
+                }
+            }
+        });
+        alertVC.addAction(
+            new UIAlertAction(
+                cancelText,
+                UIAlertActionStyle.Destructive,
+                cancelEvent
+            )
+        );
+        alertVC.addAction(
+            new UIAlertAction(
+                confirmText,
+                UIAlertActionStyle.Default,
+                confirmEvent
+            )
+        );
+        alertVC.present();
+
+        function confirmEvent() {
+            const username = alertVC.getText(0);
+            const password = alertVC.getText(1);
+            resolve({
+                username,
+                password
+            });
+        }
+
         function cancelEvent() {
             reject("cancel");
         }
@@ -216,10 +282,17 @@ const showPlainAlert = async (title, message) => {
             message: message,
             text: text
         });
+    },
+    showLoginAlert = async title => {
+        return await loginAlert({
+            title: title
+        });
     };
 module.exports = {
     plainAlert,
     showPlainAlert,
     inputAlert,
-    showInputAlert
+    showInputAlert,
+    loginAlert,
+    showLoginAlert
 };
