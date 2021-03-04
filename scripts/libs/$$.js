@@ -306,6 +306,7 @@ let __VERSION__ = 2,
         }
     },
     Url = {
+        isUrl: str => /(.+):\/\/(.+).(.+)\/(.+)/.test(str),
         getUrlByRegex: inputUrl => {
             let _inputUrl = inputUrl,
                 fragmentIndex = _inputUrl.indexOf("#"),
