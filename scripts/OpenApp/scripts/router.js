@@ -17,6 +17,12 @@ const JSDialogs = require("JSDialogs"),
             app: "telegram",
             func: "me",
             regex: /https:\/\/t.me\/(.+)/
+        },
+        "bilibili.video": {
+            type: "video",
+            app: "bilibili",
+            func: "video",
+            regex: /https:\/\/www.bilibili.com\/video\/(.+)/
         }
     },
     checkRouterByRegex = _inputUrl => {
