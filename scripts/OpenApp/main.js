@@ -1,6 +1,5 @@
 "use strict";
 const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
-    // JSDialogs = require("JSDialogs"),
     $$ = require("$$"),
     router = require("./scripts/router"),
     init = async () => {
@@ -38,7 +37,6 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
                 if (text) {
                     router.init(text);
                 } else {
-                    // JSDialogs.showPlainAlert("错误！", "请输入内容");
                     $ui.alert({
                         title: "错误！",
                         message: "请输入内容"
@@ -47,7 +45,6 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
             }
         });
     };
-$$.Push.default("test", "hello");
 try {
     init();
 } catch (_error) {

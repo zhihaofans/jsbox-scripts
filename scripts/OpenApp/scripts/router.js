@@ -5,13 +5,13 @@ const JSDialogs = require("JSDialogs"),
             type: "social",
             app: "v2er",
             func: "topic",
-            regex: /https:\/\/(www.v2ex|v2ex).com\/t\/(.+)/
+            regex: /https:\/\/www.v2ex.com\/t\/(.+)/
         },
         "v2er.member": {
             type: "social",
             app: "v2er",
             func: "member",
-            regex: /https:\/\/(www.v2ex|v2ex).com\/member\/(.+)/
+            regex: /https:\/\/www.v2ex.com\/member\/(.+)/
         },
         "telegram.me": {
             type: "social",
@@ -76,32 +76,38 @@ const JSDialogs = require("JSDialogs"),
         }
     },
     init = async _url => {
-        const routerData = await checkRouterByRegex(_url);
-        if (routerData) {
-            $console.info(routerData);
-            $ui.menu({
-                items: routerData.map(r => r.routerId),
-                handler: (title, idx) => {
-                    const thisRouter = routerData[idx];
-                    goRouter(
-                        thisRouter.routerId,
-                        thisRouter.regexMatch[thisRouter.regexMatch.length - 1]
-                    );
-                }
-            });
-        } else {
-            if ($app.env == $env.app) {
-                await JSDialogs.showPlainAlert(
-                    "错误",
-                    "找不到支持该链接的路由"
-                );
-            } else {
-                // $$.Push.default("错误", "找不到支持该链接的路由");
-                $ui.alert({
-                    title: "错误",
-                    message: "找不到支持该链接的路由"
+        if (_url && _url.length > 0) {
+            const routerData = await checkRouterByRegex(_url);
+            if (routerData && routerData.length > 0) {
+                $console.info(routerData);
+                $ui.menu({
+                    items: routerData.map(r => r.routerId),
+                    handler: (title, idx) => {
+                        const thisRouter = routerData[idx];
+                        goRouter(
+                            thisRouter.routerId,
+                            thisRouter.regexMatch[
+                                thisRouter.regexMatch.length - 1
+                            ]
+                        );
+                    }
                 });
+            } else {
+                if ($app.env == $env.app) {
+                    await JSDialogs.showPlainAlert(
+                        "错误",
+                        "找不到支持该链接的路由"
+                    );
+                } else {
+                    // $$.Push.default("错误", "找不到支持该链接的路由");
+                    $ui.alert({
+                        title: "错误",
+                        message: "找不到支持该链接的路由"
+                    });
+                }
             }
+        } else {
+            $app.close();
         }
     };
 module.exports = {
