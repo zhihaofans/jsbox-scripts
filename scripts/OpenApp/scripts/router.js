@@ -1,4 +1,5 @@
 const JSDialogs = require("JSDialogs"),
+    $$ = require("$$"),
     _routerData = {
         "v2er.topic": {
             type: "social",
@@ -23,9 +24,15 @@ const JSDialogs = require("JSDialogs"),
             app: "bilibili",
             func: "video",
             regex: /https:\/\/www.bilibili.com\/video\/(.+)/
+        },
+        "bilibili.m.video": {
+            type: "video",
+            app: "bilibili",
+            func: "video",
+            regex: /https:\/\/m.bilibili.com\/video\/(.+)/
         }
     },
-    checkRouterByRegex = _inputUrl => {
+    checkRouterByRegex = async _inputUrl => {
         if (_inputUrl) {
             const matchResult = [];
             Object.keys(_routerData).map(i => {
@@ -43,7 +50,7 @@ const JSDialogs = require("JSDialogs"),
             return undefined;
         }
     },
-    goRouter = (_routerId, _routerValue) => {
+    goRouter = async (_routerId, _routerValue) => {
         $console.info(`routerId:${_routerId}\nvalue:${_routerValue}`);
         if (_routerId && _routerValue) {
             const routerData = _routerData[_routerId];
@@ -53,10 +60,18 @@ const JSDialogs = require("JSDialogs"),
                     const routerJs = require(jsPath);
                     routerJs[routerData.app][routerData.func](_routerValue);
                 } else {
-                    JSDialogs.showPlainAlert("不存在该文件", jsPath);
+                    if ($app.env == $env.app) {
+                        await JSDialogs.showPlainAlert("不存在该文件", jsPath);
+                    } else {
+                        $$.Push.default("不存在该文件", jsPath);
+                    }
                 }
             } else {
-                JSDialogs.showPlainAlert("错误", "未知路由");
+                if ($app.env == $env.app) {
+                    await JSDialogs.showPlainAlert("错误", "未知路由");
+                } else {
+                    $$.Push.default("错误", "未知路由");
+                }
             }
         }
     },
@@ -75,7 +90,18 @@ const JSDialogs = require("JSDialogs"),
                 }
             });
         } else {
-            $ui.error("找不到支持该链接的路由");
+            if ($app.env == $env.app) {
+                await JSDialogs.showPlainAlert(
+                    "错误",
+                    "找不到支持该链接的路由"
+                );
+            } else {
+                // $$.Push.default("错误", "找不到支持该链接的路由");
+                $ui.alert({
+                    title: "错误",
+                    message: "找不到支持该链接的路由"
+                });
+            }
         }
     };
 module.exports = {
