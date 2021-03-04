@@ -215,7 +215,7 @@ let __VERSION__ = 2,
             });
         },
         paste: () => {
-            return $clipboard.text;
+            return $clipboard.text || "";
         },
         code: str => {
             return $qrcode.encode(str);
@@ -306,7 +306,13 @@ let __VERSION__ = 2,
         }
     },
     Url = {
-        isUrl: str => /(.+):\/\/(.+).(.+)\/(.+)/.test(str),
+        isUrl: str => {
+            if (str) {
+                return /(.+):\/\/(.+).(.+)\/(.+)/.test(str);
+            } else {
+                return false;
+            }
+        },
         getUrlByRegex: inputUrl => {
             let _inputUrl = inputUrl,
                 fragmentIndex = _inputUrl.indexOf("#"),
