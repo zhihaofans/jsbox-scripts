@@ -380,6 +380,15 @@ let __VERSION__ = 2,
             var timezone = '"Asia/Shanghai';
             moment(ISO8601).tz(timezone).format("YYYY-MM-DD hh:mm:ss");
         }
+    },
+    Push = {
+        default: (title, body) => {
+            $push.schedule({
+                title: title || "标题",
+                body: body || "内容",
+                mute: true
+            });
+        }
     };
 module.exports = {
     __VERSION__: __VERSION__,
@@ -392,5 +401,6 @@ module.exports = {
     File: File,
     View: View,
     Url: Url,
-    Time: Time
+    Time: Time,
+    Push: Push
 };
