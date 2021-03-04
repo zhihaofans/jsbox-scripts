@@ -108,17 +108,17 @@ const __VERSION__ = 1,
             app: (mode, id) => {
                 $app.openURL(`bilibili://${mode}/${id}`);
             },
-            bideo: vid => {
-                Video.Bilibili.bilibiliApp("video", vid);
+            video: vid => {
+                Video.Bilibili.app("video", vid);
             },
             getVideoUrl: vid => {
                 return `bilibili://video/${vid}`;
             },
             live: roomid => {
-                Video.Bilibili.bilibiliApp("live", roomid);
+                Video.Bilibili.app("live", roomid);
             },
             space: uid => {
-                Video.Bilibili.bilibiliApp("space", uid);
+                Video.Bilibili.app("space", uid);
             }
         },
         Acfun: {
