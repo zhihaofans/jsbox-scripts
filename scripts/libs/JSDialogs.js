@@ -1,3 +1,5 @@
+//JSBoxDialogs: https://github.com/Gandum2077/jsbox-dialogs
+
 //Utils
 const l10nRes = {
     CANCEL: {
