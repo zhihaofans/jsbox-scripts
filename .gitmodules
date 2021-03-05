@@ -1,0 +1,3 @@
+[submodule "scripts/EasyJsBox"]
+	path = scripts/EasyJsBox
+	url = git@github.com:zhihaofans/EasyJsBox.git
