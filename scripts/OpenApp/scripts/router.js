@@ -35,13 +35,19 @@ const JSDialogs = require("JSDialogs"),
             type: "video",
             app: "bilibili",
             func: "space",
-            regex: /https:\/\/space.bilibili.com\/(.+?)/
+            regex: /https:\/\/space.bilibili.com\/(.+)/
         },
         "bilibili.m.space": {
             type: "video",
             app: "bilibili",
             func: "space",
             regex: /https:\/\/m.bilibili.com\/space\/(.+)/
+        },
+        "bilibili.b23wtf": {
+            type: "video",
+            app: "bilibili",
+            func: "b23wtf",
+            regex: /https:\/\/b23.tv\/(.+)/
         }
     },
     checkRouterByRegex = async _inputUrl => {
