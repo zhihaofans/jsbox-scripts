@@ -1,7 +1,7 @@
 "use strict";
 const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
     $$ = require("$$"),
-    router = require("./scripts/router"),
+    router = require("./scripts/init"),
     init = async () => {
         const _clipUrl = $$.Str.paste();
         switch ($app.env) {
