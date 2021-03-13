@@ -15,7 +15,7 @@ let microsoftEdgeWeb = url => {
 };
 // Jsbox
 let jsboxInstall = (url, name = undefined, icon = undefined) => {
-    var installUrl = `jsbox://import?url=${encodeURI(url)}`;
+    let installUrl = `jsbox://import?url=${encodeURI(url)}`;
     if (name) {
         installUrl += `&name=${encodeURI(name)}`;
     }
@@ -30,7 +30,7 @@ let jsboxRun = (name, location = "local") => {
 
 // thor
 let thorLaunch = filterName => {
-    var appUrl = "thor://sniffer.gui/launch";
+    let appUrl = "thor://sniffer.gui/launch";
     if (filterName) {
         appUrl += `filter_name=${encodeURI(filterName)}`;
     }

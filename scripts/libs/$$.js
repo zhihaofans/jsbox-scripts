@@ -1,4 +1,4 @@
-let __VERSION__ = 2,
+const __VERSION__ = 2,
     Http = {
         getAwait: async (url, header) => {
             const result = await $http.get({
@@ -20,7 +20,7 @@ let __VERSION__ = 2,
     },
     ModV1 = {
         getModList: modDir => {
-            var modList = [];
+            let modList = [];
             const fileList = $file.list(modDir);
             fileList.map(f => {
                 if (!$file.isDirectory(f)) {
@@ -285,7 +285,7 @@ let __VERSION__ = 2,
         },
         getFileList: (dir, ext = undefined) => {
             if ($file.exists(dir) && $file.isDirectory(dir)) {
-                var files = [];
+                let files = [];
                 const fileList = $file.list(dir);
                 fileList.map(f => {
                     if (!$file.isDirectory(f)) {
@@ -393,7 +393,7 @@ let __VERSION__ = 2,
         },
         iso8601ToLocaltime: ISO8601 => {
             const moment = require("moment");
-            var timezone = '"Asia/Shanghai';
+            let timezone = '"Asia/Shanghai';
             moment(ISO8601).tz(timezone).format("YYYY-MM-DD hh:mm:ss");
         }
     },
