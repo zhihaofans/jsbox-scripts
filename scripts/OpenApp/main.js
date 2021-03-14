@@ -8,25 +8,21 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
                 inputUrl(_clipUrl);
                 break;
             case $env.action:
+                let shareLink = _defaultUrl;
                 if ($context.linkItems) {
-                    const shareLink = $context.linkItems[0] || undefined;
-
-                    router.init(shareLink);
-                } else {
-                    $app.close();
+                    shareLink = $context.link || undefined;
                 }
+                inputUrl(shareLink);
+                break;
+            case $env.safari:
+                if ($context.safari.items) {
+                    shareLink = $context.safari.items.location || undefined;
+                }
+                inputUrl(shareLink);
                 break;
             default:
                 $app.close();
         }
-        // const shareLink = $context.linkItems[0] || undefined;
-        // if (shareLink) {
-        //     await JSDialogs.showPlainAlert("分享链接", shareLink);
-        //     $$.Str.copy(shareLink);
-        //     router.init(shareLink);
-        // } else {
-        //     inputUrl();
-        // }
     },
     inputUrl = async _inputStr => {
         $input.text({
