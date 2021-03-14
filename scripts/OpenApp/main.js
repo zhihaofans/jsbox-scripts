@@ -1,4 +1,3 @@
-"use strict";
 const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
     $$ = require("$$"),
     router = require("./scripts/init"),
@@ -10,7 +9,8 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
                 break;
             case $env.action:
                 if ($context.linkItems) {
-                    const shareLink = $context.linkItems[0] || "undefined";
+                    const shareLink = $context.linkItems[0] || undefined;
+
                     router.init(shareLink);
                 } else {
                     $app.close();
@@ -44,9 +44,21 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
                 }
             }
         });
+    },
+    saveError = _error => {
+        $file.mkdir("/.temp/error_log/");
+        const filePath = `/.temp/error_log/error_${$$.Time.getNowUnixTime()}.txt`,
+            success = $file.write({
+                data: $data({ string: _error }),
+                path: filePath
+            });
+        $console.info(filePath);
+        $console.error(_error);
+        $console.warn(success);
+        return success;
     };
 try {
     init();
 } catch (_error) {
-    $console.error(_error.message);
+    saveError(_error.message);
 }
