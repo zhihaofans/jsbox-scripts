@@ -398,11 +398,11 @@ const __VERSION__ = 2,
         }
     },
     Push = {
-        default: (title, body) => {
+        default: (title = "标题", body = "内容", mute = true) => {
             $push.schedule({
-                title: title || "标题",
-                body: body || "内容",
-                mute: true
+                title: title,
+                body: body,
+                mute: mute
             });
         }
     };
