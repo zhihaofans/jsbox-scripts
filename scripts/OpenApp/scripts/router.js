@@ -46,5 +46,29 @@ module.exports = {
         app: "bilibili",
         func: "b23wtf",
         regex: /https:\/\/b23.tv\/(.+)/
+    },
+    "pixiv.cat.member.illust.single": {
+        type: "image",
+        app: "pixivCat",
+        func: "single",
+        regex: /https:\/\/www.pixiv.net\/member_illust.php?(.+)/
+    },
+    "pixiv.cat.member.illust.mult": {
+        type: "image",
+        app: "pixivCat",
+        func: "single",
+        regex: /https:\/\/www.pixiv.net\/member_illust.php?(.+)/
+    },
+    "pixiv.re.member.illust.single": {
+        type: "image",
+        app: "pixivRe",
+        func: "single",
+        regex: /https:\/\/www.pixiv.net\/member_illust.php?(.+)/
+    },
+    "pixiv.re.member.illust.mult": {
+        type: "image",
+        app: "pixivRe",
+        func: "single",
+        regex: /https:\/\/www.pixiv.net\/member_illust.php?(.+)/
     }
 };
