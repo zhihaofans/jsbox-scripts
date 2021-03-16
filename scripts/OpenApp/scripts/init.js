@@ -53,6 +53,7 @@ const JSDialogs = require("JSDialogs"),
                     items: routerData.map(r => r.routerId),
                     handler: (title, idx) => {
                         const thisRouter = routerData[idx];
+                        $console.error(thisRouter);
                         goRouter(
                             thisRouter.routerId,
                             thisRouter.regexMatch[
