@@ -25,9 +25,16 @@ const JSDialogs = require("JSDialogs"),
             const routerData = _routerData[_routerId];
             if (routerData) {
                 const jsPath = `/scripts/${routerData.type}.js`;
+                $console.info(`jsPath:${jsPath}`);
                 if ($file.exists(jsPath)) {
                     const routerJs = require(jsPath);
-                    routerJs[routerData.app][routerData.func](_routerValue);
+                    try {
+                        routerJs[routerData.app][routerData.func](_routerValue);
+                        $console.info("goRouter");
+                    } catch (_error) {
+                        $console.error("goRouter");
+                        $console.error(_error);
+                    }
                 } else {
                     if ($app.env == $env.app) {
                         await JSDialogs.showPlainAlert("不存在该文件", jsPath);
@@ -48,12 +55,10 @@ const JSDialogs = require("JSDialogs"),
         if (_url && _url.length > 0) {
             const routerData = await checkRouterByRegex(_url);
             if (routerData && routerData.length > 0) {
-                $console.info(routerData);
                 $ui.menu({
                     items: routerData.map(r => r.routerId),
                     handler: (title, idx) => {
                         const thisRouter = routerData[idx];
-                        $console.error(thisRouter);
                         goRouter(
                             thisRouter.routerId,
                             thisRouter.regexMatch[
