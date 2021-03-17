@@ -9,8 +9,21 @@ const pixivCat = {
                     }
                 });
                 if (queryItemList["illust_id"]) {
-                    const illust_id = queryItemList["illust_id"];
-                    $app.openURL(`https://pixiv.cat/${illust_id}.png`);
+                    const illust_id = queryItemList["illust_id"],
+                        newUrl = `https://pixiv.cat/${illust_id}.png`;
+                    $ui.menu({
+                        items: ["用Safari打开", "分享"],
+                        handler: function (title, idx) {
+                            switch (idx) {
+                                case 0:
+                                    $app.openURL(newUrl);
+                                    break;
+                                case 1:
+                                    $share.sheet([newUrl]);
+                                    break;
+                            }
+                        }
+                    });
                 } else {
                     $app.close();
                 }
@@ -28,8 +41,21 @@ const pixivCat = {
                     }
                 });
                 if (queryItemList["illust_id"]) {
-                    const illust_id = queryItemList["illust_id"];
-                    $app.openURL(`https://pixiv.cat/${illust_id}-${index}.png`);
+                    const illust_id = queryItemList["illust_id"],
+                        newUrl = `https://pixiv.cat/${illust_id}-${index}.png`;
+                    $ui.menu({
+                        items: ["用Safari打开", "分享"],
+                        handler: function (title, idx) {
+                            switch (idx) {
+                                case 0:
+                                    $app.openURL(newUrl);
+                                    break;
+                                case 1:
+                                    $share.sheet([newUrl]);
+                                    break;
+                            }
+                        }
+                    });
                 } else {
                     $app.close();
                 }
@@ -49,8 +75,21 @@ const pixivCat = {
                     }
                 });
                 if (queryItemList["illust_id"]) {
-                    const illust_id = queryItemList["illust_id"];
-                    $app.openURL(`https://pixiv.re/${illust_id}.png`);
+                    const illust_id = queryItemList["illust_id"],
+                        newUrl = `https://pixiv.re/${illust_id}.png`;
+                    $ui.menu({
+                        items: ["用Safari打开", "分享"],
+                        handler: function (title, idx) {
+                            switch (idx) {
+                                case 0:
+                                    $app.openURL(newUrl);
+                                    break;
+                                case 1:
+                                    $share.sheet([newUrl]);
+                                    break;
+                            }
+                        }
+                    });
                 } else {
                     $app.close();
                 }
@@ -68,8 +107,21 @@ const pixivCat = {
                     }
                 });
                 if (queryItemList["illust_id"]) {
-                    const illust_id = queryItemList["illust_id"];
-                    $app.openURL(`https://pixiv.re/${illust_id}-${index}.png`);
+                    const illust_id = queryItemList["illust_id"],
+                        newUrl = `https://pixiv.re/${illust_id}-${index}.png`;
+                    $ui.menu({
+                        items: ["用Safari打开", "分享"],
+                        handler: function (title, idx) {
+                            switch (idx) {
+                                case 0:
+                                    $app.openURL(newUrl);
+                                    break;
+                                case 1:
+                                    $share.sheet([newUrl]);
+                                    break;
+                            }
+                        }
+                    });
                 } else {
                     $app.close();
                 }
