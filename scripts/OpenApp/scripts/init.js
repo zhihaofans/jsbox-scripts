@@ -34,6 +34,10 @@ const JSDialogs = require("JSDialogs"),
                     } catch (_error) {
                         $console.error("goRouter");
                         $console.error(_error);
+                        $ui.alert({
+                            title: "goRouter:Error",
+                            message: _error.message
+                        });
                     }
                 } else {
                     if ($app.env == $env.app) {
