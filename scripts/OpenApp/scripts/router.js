@@ -23,23 +23,35 @@ module.exports = {
         func: "video",
         regex: /https:\/\/www.bilibili.com\/video\/(.+)/
     },
+    "bilibili.space": {
+        type: "video",
+        app: "bilibili",
+        func: "space",
+        regex: /https:\/\/space.bilibili.com\/(\d+)/
+    },
+    "bilibili.live.room": {
+        type: "video",
+        app: "bilibili",
+        func: "space",
+        regex: /https:\/\/space.bilibili.com\/(\d+)/
+    },
     "bilibili.m.video": {
         type: "video",
         app: "bilibili",
         func: "video",
         regex: /https:\/\/m.bilibili.com\/video\/(.+)/
     },
-    "bilibili.space": {
-        type: "video",
-        app: "bilibili",
-        func: "space",
-        regex: /https:\/\/space.bilibili.com\/(.+)/
-    },
     "bilibili.m.space": {
         type: "video",
         app: "bilibili",
         func: "space",
-        regex: /https:\/\/m.bilibili.com\/space\/(.+)/
+        regex: /https:\/\/m.bilibili.com\/space\/(\d+)/
+    },
+    "bilibili.t.dynamic": {
+        type: "video",
+        app: "bilibili",
+        func: "dynamic",
+        regex: /https:\/\/t.bilibili.com\/h5\/dynamic\/detail\/(\d+)/
     },
     "bilibili.b23wtf": {
         type: "video",
@@ -51,12 +63,12 @@ module.exports = {
         type: "image",
         app: "pixivCat",
         func: "single",
-        regex: /https:\/\/www.pixiv.net\/artworks\/(.+)/
+        regex: /https:\/\/www.pixiv.net\/artworks\/(\d+)/
     },
     "pixiv.cat.artworks.mult": {
         type: "image",
         app: "pixivCat",
         func: "mult",
-        regex: /https:\/\/www.pixiv.net\/artworks\/(.+)/
+        regex: /https:\/\/www.pixiv.net\/artworks\/(\d+)/
     }
 };

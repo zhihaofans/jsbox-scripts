@@ -6,8 +6,17 @@ const _Video = require("./lib").appScheme.Video,
         space: _uid => {
             _Video.Bilibili.space(_uid);
         },
+        article: _id => {
+            _Video.Bilibili.article(_id);
+        },
+        dynamic: _id => {
+            _Video.Bilibili.dynamic(_id);
+        },
+        live: _id => {
+            _Video.Bilibili.live(_id);
+        },
         b23wtf: value => {
-            $app.openURL(`https://b23.wtf/`);
+            $app.openURL(`https://b23.wtf/${value}`);
         }
     };
 module.exports = {
