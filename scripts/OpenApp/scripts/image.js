@@ -37,7 +37,16 @@ const pixivUtil = {
         },
         mult: artworks_id => {
             if (artworks_id) {
-                pixivUtil.menu.single(`https://pixiv.cat/${artworks_id}.png`);
+                $input.text({
+                    type: $kbType.number,
+                    placeholder: "第几张图片，从1开始",
+                    text: 1,
+                    handler: function (index) {
+                        pixivUtil.menu.single(
+                            `https://pixiv.cat/${artworks_id}-${index || 1}.png`
+                        );
+                    }
+                });
             } else {
                 $app.close();
             }

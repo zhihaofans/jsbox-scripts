@@ -56,7 +56,7 @@ module.exports = {
     "pixiv.cat.artworks.mult": {
         type: "image",
         app: "pixivCat",
-        func: "single",
+        func: "mult",
         regex: /https:\/\/www.pixiv.net\/artworks\/(.+)/
     }
 };
