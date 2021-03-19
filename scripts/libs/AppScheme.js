@@ -119,6 +119,12 @@ const __VERSION__ = 1,
             },
             space: uid => {
                 Video.Bilibili.app("space", uid);
+            },
+            article: id => {
+                Video.Bilibili.app("article/readlist", id);
+            },
+            dynamic: id => {
+                Video.Bilibili.app("following/detail", id);
             }
         },
         Acfun: {
