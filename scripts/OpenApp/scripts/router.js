@@ -47,28 +47,16 @@ module.exports = {
         func: "b23wtf",
         regex: /https:\/\/b23.tv\/(.+)/
     },
-    "pixiv.cat.member.illust.single": {
+    "pixiv.cat.artworks.single": {
         type: "image",
         app: "pixivCat",
         func: "single",
-        regex: /https:\/\/www.pixiv.net\/member_illust.php\?(.+)/
+        regex: /https:\/\/www.pixiv.net\/artworks\/(.+)/
     },
-    "pixiv.cat.member.illust.mult": {
+    "pixiv.cat.artworks.mult": {
         type: "image",
         app: "pixivCat",
-        func: "mult",
-        regex: /https:\/\/www.pixiv.net\/member_illust.php\?(.+)/
-    },
-    "pixiv.re.member.illust.single": {
-        type: "image",
-        app: "pixivRe",
         func: "single",
-        regex: /https:\/\/www.pixiv.net\/member_illust.php\?(.+)/
-    },
-    "pixiv.re.member.illust.mult": {
-        type: "image",
-        app: "pixivRe",
-        func: "mult",
-        regex: /https:\/\/www.pixiv.net\/member_illust.php\?(.+)/
+        regex: /https:\/\/www.pixiv.net\/artworks\/(.+)/
     }
 };
