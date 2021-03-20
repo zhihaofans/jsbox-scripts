@@ -32,7 +32,7 @@ module.exports = {
     "bilibili.live.room": {
         type: "video",
         app: "bilibili",
-        func: "space",
+        func: "live",
         regex: /https:\/\/space.bilibili.com\/(\d+)/
     },
     "bilibili.m.video": {
