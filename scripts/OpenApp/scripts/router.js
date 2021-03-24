@@ -77,6 +77,12 @@ module.exports = {
     func: "b23wtf",
     regex: /https:\/\/b23.tv\/(.+)/
   },
+  "bilibili.vtbmoe": {
+    type: "video",
+    app: "bilibili",
+    func: "vtbmoe",
+    regex: /https:\/\/space.bilibili.com\/(\d+)/
+  },
   "pixiv.cat.artworks.single": {
     type: "image",
     app: "pixivCat",

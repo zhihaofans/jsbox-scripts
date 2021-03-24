@@ -17,6 +17,9 @@ const _Video = require("./lib").appScheme.Video,
     },
     b23wtf: value => {
       $app.openURL(`https://b23.wtf/${value}`);
+    },
+    vtbmoe: value => {
+      $app.openURL(`https://vtbs.moe/detail/${value}`);
     }
   };
 module.exports = {
