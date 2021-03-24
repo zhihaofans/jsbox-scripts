@@ -59,11 +59,17 @@ module.exports = {
     func: "article",
     regex: /https:\/\/www.bilibili.com\/read\/mobile\/(\d+)/
   },
-  "bilibili.t.dynamic": {
+  "bilibili.t.h5.dynamic": {
     type: "video",
     app: "bilibili",
     func: "dynamic",
     regex: /https:\/\/t.bilibili.com\/h5\/dynamic\/detail\/(\d+)/
+  },
+  "bilibili.t.dynamic": {
+    type: "video",
+    app: "bilibili",
+    func: "dynamic",
+    regex: /https:\/\/t.bilibili.com\/(\d+)/
   },
   "bilibili.b23wtf": {
     type: "video",
