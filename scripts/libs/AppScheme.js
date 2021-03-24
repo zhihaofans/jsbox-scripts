@@ -121,7 +121,7 @@ const __VERSION__ = 1,
         Video.Bilibili.app("space", uid);
       },
       article: id => {
-        Video.Bilibili.app("article/readlist", id);
+        Video.Bilibili.app("article", id);
       },
       dynamic: id => {
         Video.Bilibili.app("following/detail", id);
