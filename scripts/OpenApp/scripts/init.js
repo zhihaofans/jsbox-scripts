@@ -20,17 +20,14 @@ const JSDialogs = require("JSDialogs"),
     }
   },
   goRouter = async (_routerId, _routerValue) => {
-    $console.info(`routerId:${_routerId}\nvalue:${_routerValue}`);
     if (_routerId && _routerValue) {
       const routerData = _routerData[_routerId];
       if (routerData) {
         const jsPath = `/scripts/${routerData.type}.js`;
-        $console.info(`jsPath:${jsPath}`);
         if ($file.exists(jsPath)) {
           const routerJs = require(jsPath);
           try {
             routerJs[routerData.app][routerData.func](_routerValue);
-            $console.info("goRouter");
           } catch (_error) {
             $console.error("goRouter");
             $console.error(_error);
