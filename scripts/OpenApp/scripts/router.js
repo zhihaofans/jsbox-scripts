@@ -29,6 +29,12 @@ module.exports = {
     func: "space",
     regex: /https:\/\/space.bilibili.com\/(\d+)/
   },
+  "bilibili.article": {
+    type: "video",
+    app: "bilibili",
+    func: "article",
+    regex: /https:\/\/www.bilibili.com\/read\/cv(\d+)/
+  },
   "bilibili.live.room": {
     type: "video",
     app: "bilibili",
@@ -46,6 +52,12 @@ module.exports = {
     app: "bilibili",
     func: "space",
     regex: /https:\/\/m.bilibili.com\/space\/(\d+)/
+  },
+  "bilibili.m.article": {
+    type: "video",
+    app: "bilibili",
+    func: "article",
+    regex: /https:\/\/www.bilibili.com\/read\/mobile\/(\d+)/
   },
   "bilibili.t.dynamic": {
     type: "video",
