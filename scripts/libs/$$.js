@@ -16,6 +16,12 @@ const __VERSION__ = 2,
         body: postBody
       });
       return url ? result : undefined;
+    },
+    get: async (url, header) => {
+      return Http.getAwait(url, header);
+    },
+    post: async (url, postBody, header = undefined) => {
+      return Http.postAwait(url, postBody, header);
     }
   },
   ModV1 = {
