@@ -265,6 +265,40 @@ const __VERSION__ = 2,
           ]
         });
       }
+    },
+    single: {
+      showImageMenu: imageUrl => {
+        if (imageUrl) {
+          const links = $detector.link(imageUrl);
+          let imageLink = imageUrl;
+          if (links.length > 1) {
+            imageLink = imageUrl[0];
+          }
+          $ui.menu({
+            items: ["用Safari打开", "分享", "预览"],
+            handler: function (title, idx) {
+              switch (idx) {
+                case 0:
+                  $app.openURL(imageLink);
+                  break;
+                case 1:
+                  $share.sheet([imageLink]);
+                  break;
+                case 2:
+                  $quicklook.open({
+                    url: imageLink,
+                    handler: function () {
+                      $console.info(imageLink);
+                    }
+                  });
+                  break;
+                default:
+                  $app.close();
+              }
+            }
+          });
+        }
+      }
     }
   },
   File = {
