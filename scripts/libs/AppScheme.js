@@ -169,6 +169,13 @@ const __VERSION__ = 1,
         $app.openURL(`r${url}`);
       }
     }
+  },
+  Pay = {
+    Alipay: {
+      miniapp: appId => {
+        $app.openURL(`alipay://platform/startapp?appId=${appId}`);
+      }
+    }
   };
 module.exports = {
   pphubOpenUser,
@@ -182,5 +189,6 @@ module.exports = {
   Browser,
   Video,
   Social,
-  File
+  File,
+  Pay
 };
