@@ -429,6 +429,11 @@ const __VERSION__ = 2,
         mute: mute
       });
     }
+  },
+  Console = {
+    auto: (success = true, message) => {
+      success ? $console.info(message) : $console.error(message);
+    }
   };
 module.exports = {
   __VERSION__: __VERSION__,
@@ -442,5 +447,6 @@ module.exports = {
   View: View,
   Url: Url,
   Time: Time,
-  Push: Push
+  Push: Push,
+  Console: Console
 };
