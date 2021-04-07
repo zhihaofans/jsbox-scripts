@@ -1,5 +1,13 @@
-const env = $app.env,AppScheme = require("AppScheme"),
-  $$ = require("$$");
-switch(env){
-  
+const $$ = require("$$");
+if ($$.Share.isActionOrSafari()) {
+  const shareLink = $$.Share.getLink();
+  if (shareLink) {
+    $app.openURL(shareLink);
+  } else {
+    $console.error("shareLink is undefined");
+    $app.close();
+  }
+} else {
+  $console.error("no share");
+  $app.close();
 }
