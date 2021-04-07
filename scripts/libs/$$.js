@@ -1,4 +1,4 @@
-const __VERSION__ = 2,
+const __VERSION__ = 3,
   Http = {
     getAwait: async (url, header) => {
       const result = await $http.get({
@@ -465,7 +465,9 @@ const __VERSION__ = 2,
         return $context.link || undefined;
       }
       if (Share.isSafari()) {
-        return $context.safari.items.location || undefined;
+        return $context.safari
+          ? $context.safari.items.location.href
+          : undefined;
       }
       return undefined;
     },
@@ -475,7 +477,7 @@ const __VERSION__ = 2,
       }
       if (Share.isSafari()) {
         return $context.safari.items.location
-          ? [$context.safari.items.location]
+          ? [$context.safari.items.location.href]
           : undefined;
       }
       return undefined;
