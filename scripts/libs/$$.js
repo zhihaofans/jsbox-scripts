@@ -445,6 +445,21 @@ const __VERSION__ = 2,
     isActionOrSafari: () => {
       return Share.isAction() || Share.isSafari();
     },
+    getImage: () => {
+      if (Share.isAction()) {
+        return $context.image || undefined;
+      }
+      return undefined;
+    },
+    getText: () => {
+      if (Share.isAction()) {
+        return $context.text || undefined;
+      }
+      if (Share.isSafari()) {
+        return $context.safari.title || undefined;
+      }
+      return undefined;
+    },
     getLink: () => {
       if (Share.isAction()) {
         return $context.link || undefined;
@@ -459,7 +474,9 @@ const __VERSION__ = 2,
         return $context.linkItems || undefined;
       }
       if (Share.isSafari()) {
-        return [$context.safari.items.location] || undefined;
+        return $context.safari.items.location
+          ? [$context.safari.items.location]
+          : undefined;
       }
       return undefined;
     }
