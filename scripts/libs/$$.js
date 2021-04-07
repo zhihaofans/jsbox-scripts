@@ -476,7 +476,7 @@ const __VERSION__ = 3,
         return $context.linkItems || undefined;
       }
       if (Share.isSafari()) {
-        return $context.safari.items.location
+        return $context.safari
           ? [$context.safari.items.location.href]
           : undefined;
       }
