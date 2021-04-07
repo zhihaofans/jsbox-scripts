@@ -3,22 +3,12 @@ const _defaultUrl = "https://www.bilibili.com/video/BV1Do4y1d7K7",
   router = require("./scripts/init"),
   init = async () => {
     const _clipUrl = $$.Str.paste();
-    switch ($app.env) {
-      case $env.app:
+    switch (true) {
+      case $$.Share.isActionOrSafari():
+        inputUrl($$.Share.getLink());
+        break;
+      case $app.env == $env.app:
         inputUrl(_clipUrl);
-        break;
-      case $env.action:
-        let shareLink = _defaultUrl;
-        if ($context.linkItems) {
-          shareLink = $context.link || undefined;
-        }
-        inputUrl(shareLink);
-        break;
-      case $env.safari:
-        if ($context.safari.items) {
-          shareLink = $context.safari.items.location || undefined;
-        }
-        inputUrl(shareLink);
         break;
       default:
         $app.close();
