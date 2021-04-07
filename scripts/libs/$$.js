@@ -434,6 +434,35 @@ const __VERSION__ = 2,
     auto: (success = true, message) => {
       success ? $console.info(message) : $console.error(message);
     }
+  },
+  Share = {
+    isAction: () => {
+      return $app.env == $env.action;
+    },
+    isSafari: () => {
+      return $app.env == $env.safari;
+    },
+    isActionOrSafari: () => {
+      return Share.isAction() || Share.isSafari();
+    },
+    getLink: () => {
+      if (Share.isAction()) {
+        return $context.link || undefined;
+      }
+      if (Share.isSafari()) {
+        return $context.safari.items.location || undefined;
+      }
+      return undefined;
+    },
+    getLinks: () => {
+      if (Share.isAction()) {
+        return $context.linkItems || undefined;
+      }
+      if (Share.isSafari()) {
+        return [$context.safari.items.location] || undefined;
+      }
+      return undefined;
+    }
   };
 module.exports = {
   __VERSION__: __VERSION__,
@@ -448,5 +477,6 @@ module.exports = {
   Url: Url,
   Time: Time,
   Push: Push,
-  Console: Console
+  Console: Console,
+  Share: Share
 };
