@@ -8,6 +8,13 @@ class SuperString extends String {
       return typeof args[number] != "undefined" ? args[number] : match;
     });
   }
+  copy(locally = true, ttl = 30) {
+    $clipboard.copy({
+      text: this,
+      ttl: ttl,
+      locally: locally
+    });
+  }
 }
 module.exports = {
   SuperString
