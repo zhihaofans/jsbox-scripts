@@ -275,7 +275,7 @@ const __VERSION__ = 3,
             imageLink = imageUrl[0];
           }
           $ui.menu({
-            items: ["用Safari打开", "分享", "预览"],
+            items: ["用Safari打开", "分享", "快速预览", "网页预览"],
             handler: function (title, idx) {
               switch (idx) {
                 case 0:
@@ -290,6 +290,12 @@ const __VERSION__ = 3,
                     handler: function () {
                       $console.info(imageLink);
                     }
+                  });
+                  break;
+                case 3:
+                  $ui.preview({
+                    title: title,
+                    url: imageLink
                   });
                   break;
                 default:
