@@ -299,10 +299,12 @@ const __VERSION__ = 3,
                   });
                   break;
                 default:
-                  $app.close();
+                  return;
               }
             }
           });
+        } else {
+          return;
         }
       }
     }
