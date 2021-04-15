@@ -101,10 +101,16 @@ module.exports = {
     func: "status",
     regex: /https:\/\/www.twitter.com\/(.+)\/status\/(\d+)/
   },
-  "twitter.user": {
-    type: "social",
-    app: "twitter",
-    func: "user",
-    regex: /https:\/\/www.twitter.com\/(.+)\//
+  "chrome.http": {
+    type: "web",
+    app: "chrome",
+    func: "http",
+    regex: /http:\/\/(.+)/
+  },
+  "chrome.https": {
+    type: "web",
+    app: "chrome",
+    func: "https",
+    regex: /https:\/\/(.+)/
   }
 };
