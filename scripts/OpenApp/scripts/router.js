@@ -94,5 +94,17 @@ module.exports = {
     app: "pixivCat",
     func: "mult",
     regex: /https:\/\/www.pixiv.net\/artworks\/(\d+)/
+  },
+  "twitter.status": {
+    type: "social",
+    app: "twitter",
+    func: "status",
+    regex: /https:\/\/www.twitter.com\/(.+)\/status\/(\d+)/
+  },
+  "twitter.user": {
+    type: "social",
+    app: "twitter",
+    func: "user",
+    regex: /https:\/\/www.twitter.com\/(.+)\//
   }
 };
