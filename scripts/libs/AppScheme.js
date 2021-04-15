@@ -70,6 +70,9 @@ const __VERSION__ = 1,
         url: url
       });
     },
+    FirefoxWeb: url => {
+      $app.openURL(`firefox://open-url?url=${url}`);
+    },
     Safari: {
       Preview: url => {
         $safari.open({
