@@ -101,6 +101,12 @@ module.exports = {
     func: "status",
     regex: /https:\/\/www.twitter.com\/(.+)\/status\/(\d+)/
   },
+  "twitter.user": {
+    type: "social",
+    app: "twitter",
+    func: "user",
+    regex: /https:\/\/www.twitter.com\/(.+)\//
+  },
   "chrome.http": {
     type: "web",
     app: "chrome",
@@ -118,5 +124,17 @@ module.exports = {
     app: "firefox",
     func: "web",
     regex: /(.+)/
+  },
+  "instagram.user": {
+    type: "social",
+    app: "instagram",
+    func: "user",
+    regex: /https:\/\/instagram.com\/([A-Za-z0-9_]+)/
+  },
+  "instagram.media": {
+    type: "social",
+    app: "instagram",
+    func: "media",
+    regex: /https:\/\/www.instagram.com\/p\/([A-Za-z0-9_]+)/
   }
 };

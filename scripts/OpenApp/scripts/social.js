@@ -20,15 +20,24 @@ const $Social = require("./lib").appScheme.Social,
     }
   },
   twitter = {
-    status: _id => {
-      $Social.Twitter.status(_id);
+    status: value => {
+      $Social.Twitter.status(value);
     },
-    user: _id => {
-      $Social.Twitter.user(_id);
+    user: value => {
+      $Social.Twitter.user(value);
+    }
+  },
+  instagram = {
+    media: value => {
+      $Social.Instagram.media(value);
+    },
+    user: value => {
+      $Social.Instagram.user(value);
     }
   };
 module.exports = {
   v2er,
   telegram,
-  twitter
+  twitter,
+  instagram
 };
