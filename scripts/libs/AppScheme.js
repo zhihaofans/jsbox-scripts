@@ -178,6 +178,14 @@ const __VERSION__ = 1,
       user: _value => {
         $app.openURL(`twitter://user?screen_name=${_value}`);
       }
+    },
+    Instagram: {
+      media: _value => {
+        $app.openURL(`instagram://media?id=${_value}`);
+      },
+      user: _value => {
+        $app.openURL(`instagram://user?username=${_value}`);
+      }
     }
   },
   File = {
