@@ -143,7 +143,7 @@ const __VERSION__ = 1,
     adaoThread: t => {
       $app.openURL(`adnmb://t/${t}`);
     },
-    v2er: {
+    V2er: {
       topic: _t => {
         $app.openURL(`v2er://topic?id=${_t}`);
       },
@@ -157,7 +157,7 @@ const __VERSION__ = 1,
         $app.openURL(`v2er://search?query=${_key}`);
       }
     },
-    telegram: {
+    Telegram: {
       me: _id => {
         $app.openURL(`tg://resolve?domain=${_id}`);
       }
