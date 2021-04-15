@@ -52,6 +52,12 @@ const __VERSION__ = 1,
         url: url
       });
     },
+    ChromeHttp: value => {
+      $app.openURL(`googlechrome://${value}`);
+    },
+    ChromeHttps: value => {
+      $app.openURL(`googlechromes://${value}`);
+    },
     QQBrowser: url => {
       $app.openBrowser({
         type: 10003,
