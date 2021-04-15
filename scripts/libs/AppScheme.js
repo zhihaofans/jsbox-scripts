@@ -161,19 +161,17 @@ const __VERSION__ = 1,
       me: _id => {
         $app.openURL(`tg://resolve?domain=${_id}`);
       }
+    },
+    Twitter: {
+      status: _id => {
+        $app.openURL(`twitter://status?id=${_id}`);
+      }
     }
   },
   File = {
     Documents: {
       open: url => {
         $app.openURL(`r${url}`);
-      }
-    }
-  },
-  Pay = {
-    Alipay: {
-      miniapp: appId => {
-        $app.openURL(`alipay://platform/startapp?appId=${appId}`);
       }
     }
   };
@@ -189,6 +187,5 @@ module.exports = {
   Browser,
   Video,
   Social,
-  File,
-  Pay
+  File
 };
