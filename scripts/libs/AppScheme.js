@@ -180,9 +180,6 @@ const __VERSION__ = 1,
       }
     },
     Instagram: {
-      media: _value => {
-        $app.openURL(`instagram://media?id=${_value}`);
-      },
       user: _value => {
         $app.openURL(`instagram://user?username=${_value}`);
       }
