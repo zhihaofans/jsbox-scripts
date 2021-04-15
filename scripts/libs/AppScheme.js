@@ -163,8 +163,11 @@ const __VERSION__ = 1,
       }
     },
     Twitter: {
-      status: _id => {
-        $app.openURL(`twitter://status?id=${_id}`);
+      status: _value => {
+        $app.openURL(`twitter://status?id=${_value}`);
+      },
+      user: _value => {
+        $app.openURL(`twitter://user?screen_name=${_value}`);
       }
     }
   },
