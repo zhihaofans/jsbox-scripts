@@ -130,11 +130,5 @@ module.exports = {
     app: "instagram",
     func: "user",
     regex: /https:\/\/instagram.com\/([A-Za-z0-9_]+)/
-  },
-  "instagram.media": {
-    type: "social",
-    app: "instagram",
-    func: "media",
-    regex: /https:\/\/www.instagram.com\/p\/([A-Za-z0-9_]+)/
   }
 };
