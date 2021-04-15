@@ -112,5 +112,11 @@ module.exports = {
     app: "chrome",
     func: "https",
     regex: /https:\/\/(.+)/
+  },
+  "firefox.web": {
+    type: "web",
+    app: "firefox",
+    func: "web",
+    regex: /(.+)/
   }
 };

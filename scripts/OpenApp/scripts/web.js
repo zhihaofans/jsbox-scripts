@@ -6,7 +6,13 @@ const _Browser = require("./lib").appScheme.Browser,
     https: value => {
       _Browser.ChromeHttp(value);
     }
+  },
+  firefox = {
+    web: value => {
+      _Browser.FirefoxWeb(value);
+    }
   };
 module.exports = {
-  chrome
+  chrome,
+  firefox
 };
