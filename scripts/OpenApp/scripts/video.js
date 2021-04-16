@@ -21,7 +21,14 @@ const _Video = require("./lib").appScheme.Video,
     vtbmoe: value => {
       $app.openURL(`https://vtbs.moe/detail/${value}`);
     }
+  },
+  acfun = {
+    user: value => {
+      $app.openURL(`https://www.acfun.cn/u/${value}.aspx`);
+      // _Video.Acfun.user(value);
+    }
   };
 module.exports = {
-  bilibili
+  bilibili,
+  acfun
 };

@@ -142,5 +142,11 @@ module.exports = {
     app: "instagram",
     func: "user",
     regex: /https:\/\/instagram.com\/([A-Za-z0-9_]+)/
+  },
+  "acfun.user": {
+    type: "video",
+    app: "acfun",
+    func: "user",
+    regex: /https:\/\/www.acfun.cn\/u\/(\d+).aspx/
   }
 };
