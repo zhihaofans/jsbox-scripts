@@ -46,17 +46,19 @@ const __VERSION__ = 1,
         $app.openURL(`Alook://download/${$text.URLEncode(url)}`);
       }
     },
-    Chrome: url => {
-      $app.openBrowser({
-        type: 10000,
-        url: url
-      });
-    },
-    ChromeHttp: value => {
-      $app.openURL(`googlechrome://${value}`);
-    },
-    ChromeHttps: value => {
-      $app.openURL(`googlechromes://${value}`);
+    Chrome: {
+      jsbox: url => {
+        $app.openBrowser({
+          type: 10000,
+          url: url
+        });
+      },
+      http: value => {
+        $app.openURL(`googlechrome://${value}`);
+      },
+      https: value => {
+        $app.openURL(`googlechromes://${value}`);
+      }
     },
     QQBrowser: url => {
       $app.openBrowser({
