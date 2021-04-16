@@ -94,5 +94,53 @@ module.exports = {
     app: "pixivCat",
     func: "mult",
     regex: /https:\/\/www.pixiv.net\/artworks\/(\d+)/
+  },
+  "twitter.status": {
+    type: "social",
+    app: "twitter",
+    func: "status",
+    regex: /https:\/\/www.twitter.com\/(.+)\/status\/(\d+)/
+  },
+  "twitter.mobile.status": {
+    type: "social",
+    app: "twitter",
+    func: "status",
+    regex: /https:\/\/mobile.twitter.com\/(.+)\/status\/(\d+)/
+  },
+  "twitter.user": {
+    type: "social",
+    app: "twitter",
+    func: "user",
+    regex: /https:\/\/www.twitter.com\/([A-Za-z0-9_]+)/
+  },
+  "twitter.mobile.user": {
+    type: "social",
+    app: "twitter",
+    func: "user",
+    regex: /https:\/\/mibile.twitter.com\/([A-Za-z0-9_]+)/
+  },
+  "chrome.http": {
+    type: "web",
+    app: "chrome",
+    func: "http",
+    regex: /http:\/\/(.+)/
+  },
+  "chrome.https": {
+    type: "web",
+    app: "chrome",
+    func: "https",
+    regex: /https:\/\/(.+)/
+  },
+  "firefox.web": {
+    type: "web",
+    app: "firefox",
+    func: "web",
+    regex: /(.+)/
+  },
+  "instagram.user": {
+    type: "social",
+    app: "instagram",
+    func: "user",
+    regex: /https:\/\/instagram.com\/([A-Za-z0-9_]+)/
   }
 };
