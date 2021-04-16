@@ -52,6 +52,12 @@ const __VERSION__ = 1,
         url: url
       });
     },
+    ChromeHttp: value => {
+      $app.openURL(`googlechrome://${value}`);
+    },
+    ChromeHttps: value => {
+      $app.openURL(`googlechromes://${value}`);
+    },
     QQBrowser: url => {
       $app.openBrowser({
         type: 10003,
@@ -63,6 +69,9 @@ const __VERSION__ = 1,
         type: 10002,
         url: url
       });
+    },
+    FirefoxWeb: url => {
+      $app.openURL(`firefox://open-url?url=${url}`);
     },
     Safari: {
       Preview: url => {
@@ -143,7 +152,7 @@ const __VERSION__ = 1,
     adaoThread: t => {
       $app.openURL(`adnmb://t/${t}`);
     },
-    v2er: {
+    V2er: {
       topic: _t => {
         $app.openURL(`v2er://topic?id=${_t}`);
       },
@@ -157,14 +166,25 @@ const __VERSION__ = 1,
         $app.openURL(`v2er://search?query=${_key}`);
       }
     },
-    telegram: {
+    Telegram: {
       me: _id => {
         $app.openURL(`tg://resolve?domain=${_id}`);
       }
     },
     Twitter: {
-      status: _id => {
-        $app.openURL(`twitter://status?id=${_id}`);
+      status: _value => {
+        $app.openURL(`twitter://status?id=${_value}`);
+      },
+      user: _value => {
+        $app.openURL(`twitter://user?screen_name=${_value}`);
+      }
+    },
+    Instagram: {
+      media: _value => {
+        $app.openURL(`instagram://media?id=${_value}`);
+      },
+      user: _value => {
+        $app.openURL(`instagram://user?username=${_value}`);
       }
     }
   },
