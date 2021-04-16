@@ -1,10 +1,10 @@
 const _Browser = require("./lib").appScheme.Browser,
   chrome = {
     http: value => {
-      _Browser.ChromeHttp(value);
+      _Browser.Chrome.http(value);
     },
     https: value => {
-      _Browser.ChromeHttp(value);
+      _Browser.Chrome.https(value);
     }
   },
   firefox = {
