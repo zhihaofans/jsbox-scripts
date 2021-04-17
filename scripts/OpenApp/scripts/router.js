@@ -147,6 +147,18 @@ module.exports = {
     type: "video",
     app: "acfun",
     func: "user",
+    regex: /https:\/\/www.acfun.cn\/u\/(\d+)/
+  },
+  "acfun.user.aspx": {
+    type: "video",
+    app: "acfun",
+    func: "user",
     regex: /https:\/\/www.acfun.cn\/u\/(\d+).aspx/
+  },
+  "acfun.m.user": {
+    type: "video",
+    app: "acfun",
+    func: "user",
+    regex: /https:\/\/m.acfun.cn\/upPage\/(\d+)/
   }
 };
