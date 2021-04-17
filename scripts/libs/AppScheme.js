@@ -147,6 +147,9 @@ const __VERSION__ = 1,
       },
       getVideoWebUrl: vid => {
         return `https://www.acfun.cn/v/ac${vid}`;
+      },
+      user: uid => {
+        $app.openURL(`acfun://detail/uploader/${uid}`);
       }
     }
   },
