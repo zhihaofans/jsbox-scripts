@@ -103,6 +103,20 @@ const __VERSION__ = 1,
           handler: handler
         });
       }
+    },
+    Microsoftedge: {
+      http: value => {
+        $app.openURL(`microsoft-edge-http://${value}`);
+      },
+      https: value => {
+        $app.openURL(`microsoft-edge-https://${value}`);
+      },
+      web: value => {
+        $app.openURL(`microsoft-edge://${value}`);
+      },
+      httpOrHttps: value => {
+        $app.openURL(`microsoft-edge-http://${value}`);
+      }
     }
   },
   Video = {
