@@ -66,11 +66,16 @@ const __VERSION__ = 1,
         url: url
       });
     },
-    Firefox: url => {
-      $app.openBrowser({
-        type: 10002,
-        url: url
-      });
+    Firefox: {
+      jsbox: url => {
+        $app.openBrowser({
+          type: 10002,
+          url: url
+        });
+      },
+      web: url => {
+        $app.openURL(`firefox://open-url?url=${url}`);
+      }
     },
     FirefoxWeb: url => {
       $app.openURL(`firefox://open-url?url=${url}`);
@@ -115,7 +120,7 @@ const __VERSION__ = 1,
         $app.openURL(`microsoft-edge://${value}`);
       },
       httpOrHttps: value => {
-        $app.openURL(`microsoft-edge-http://${value}`);
+        $app.openURL(`microsoft-edge-${value}`);
       }
     }
   },
