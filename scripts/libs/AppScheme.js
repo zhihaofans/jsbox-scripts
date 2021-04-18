@@ -200,6 +200,14 @@ const __VERSION__ = 1,
       clone: url => {
         $app.openURL(`working-copy://clone?remote=${url}`);
       }
+    },
+    PPhub: {
+      user: user => {
+        $app.openURL(`pphub://user?login=${user}`);
+      },
+      repository: (user, repository) => {
+        $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
+      }
     }
   },
   Tool = {
