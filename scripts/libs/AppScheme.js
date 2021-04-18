@@ -5,10 +5,6 @@ let pphubOpenUser = user => {
 let pphubOpenRepository = (user, repository) => {
   $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
 };
-// Woring Copy
-let workingcopyClone = url => {
-  $app.openURL(`working-copy://clone?remote=${url}`);
-};
 
 const __VERSION__ = 1,
   Browser = {
@@ -191,13 +187,18 @@ const __VERSION__ = 1,
     }
   },
   Network = {
-    thor: {
+    Thor: {
       launch: filterName => {
         let appUrl = "thor://sniffer.gui/launch";
         if (filterName) {
           appUrl += `filter_name=${encodeURI(filterName)}`;
         }
         $app.openURL(appUrl);
+      }
+    },
+    Workingcopy: {
+      clone: url => {
+        $app.openURL(`working-copy://clone?remote=${url}`);
       }
     }
   },
