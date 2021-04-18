@@ -24,14 +24,6 @@ let jsboxRun = (name, location = "local") => {
   $app.openURL(`jsbox://run?name=${encodeURI(name)}&location=${location}`);
 };
 
-// thor
-let thorLaunch = filterName => {
-  let appUrl = "thor://sniffer.gui/launch";
-  if (filterName) {
-    appUrl += `filter_name=${encodeURI(filterName)}`;
-  }
-  $app.openURL(appUrl);
-};
 const __VERSION__ = 1,
   Browser = {
     Alook: {
@@ -229,11 +221,11 @@ module.exports = {
   workingcopyClone,
   jsboxInstall,
   jsboxRun,
-  thorLaunch,
   __VERSION__,
   Browser,
   Video,
   Social,
   File,
-  Network
+  Network,
+  Tool
 };
