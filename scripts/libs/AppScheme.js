@@ -215,6 +215,17 @@ const __VERSION__ = 1,
         $app.openURL(`r${url}`);
       }
     }
+  },
+  Network = {
+    thor: {
+      launch: filterName => {
+        let appUrl = "thor://sniffer.gui/launch";
+        if (filterName) {
+          appUrl += `filter_name=${encodeURI(filterName)}`;
+        }
+        $app.openURL(appUrl);
+      }
+    }
   };
 module.exports = {
   pphubOpenUser,
@@ -228,5 +239,6 @@ module.exports = {
   Browser,
   Video,
   Social,
-  File
+  File,
+  Network
 };
