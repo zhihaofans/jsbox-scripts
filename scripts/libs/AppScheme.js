@@ -9,20 +9,6 @@ let pphubOpenRepository = (user, repository) => {
 let workingcopyClone = url => {
   $app.openURL(`working-copy://clone?remote=${url}`);
 };
-// Jsbox
-let jsboxInstall = (url, name = undefined, icon = undefined) => {
-  let installUrl = `jsbox://import?url=${encodeURI(url)}`;
-  if (name) {
-    installUrl += `&name=${encodeURI(name)}`;
-  }
-  if (icon) {
-    installUrl += `&icon=${encodeURI(icon)}`;
-  }
-  $app.openURL(installUrl);
-};
-let jsboxRun = (name, location = "local") => {
-  $app.openURL(`jsbox://run?name=${encodeURI(name)}&location=${location}`);
-};
 
 const __VERSION__ = 1,
   Browser = {
@@ -214,13 +200,30 @@ const __VERSION__ = 1,
         $app.openURL(appUrl);
       }
     }
+  },
+  Tool = {
+    Jsbox: {
+      install: (url, name = undefined, icon = undefined) => {
+        let installUrl = `jsbox://import?url=${encodeURI(url)}`;
+        if (name) {
+          installUrl += `&name=${encodeURI(name)}`;
+        }
+        if (icon) {
+          installUrl += `&icon=${encodeURI(icon)}`;
+        }
+        $app.openURL(installUrl);
+      },
+      run: (name, location = "local") => {
+        $app.openURL(
+          `jsbox://run?name=${encodeURI(name)}&location=${location}`
+        );
+      }
+    }
   };
 module.exports = {
   pphubOpenUser,
   pphubOpenRepository,
   workingcopyClone,
-  jsboxInstall,
-  jsboxRun,
   __VERSION__,
   Browser,
   Video,
