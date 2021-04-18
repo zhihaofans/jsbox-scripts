@@ -224,7 +224,6 @@ const __VERSION__ = 1,
 module.exports = {
   pphubOpenUser,
   pphubOpenRepository,
-  workingcopyClone,
   __VERSION__,
   Browser,
   Video,
