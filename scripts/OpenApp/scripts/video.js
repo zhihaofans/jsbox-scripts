@@ -24,8 +24,7 @@ const _Video = require("./lib").appScheme.Video,
   },
   acfun = {
     user: value => {
-      $app.openURL(`https://www.acfun.cn/u/${value}.aspx`);
-      // _Video.Acfun.user(value);
+      _Video.Acfun.user(value);
     }
   };
 module.exports = {
