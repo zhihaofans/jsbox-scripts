@@ -9,10 +9,19 @@ const _Browser = require("./lib").appScheme.Browser,
   },
   firefox = {
     web: value => {
-      _Browser.FirefoxWeb(value);
+      _Browser.Firefox.web(value);
+    }
+  },
+  msedge = {
+    http: value => {
+      _Browser.Microsoftedge.http(value);
+    },
+    https: value => {
+      _Browser.Microsoftedge.https(value);
     }
   };
 module.exports = {
   chrome,
-  firefox
+  firefox,
+  msedge
 };

@@ -160,5 +160,17 @@ module.exports = {
     app: "acfun",
     func: "user",
     regex: /https:\/\/m.acfun.cn\/upPage\/(\d+)/
+  },
+  "msedge.http": {
+    type: "web",
+    app: "msedge",
+    func: "http",
+    regex: /http:\/\/(.+)/
+  },
+  "msedge.https": {
+    type: "web",
+    app: "msedge",
+    func: "https",
+    regex: /https:\/\/(.+)/
   }
 };
