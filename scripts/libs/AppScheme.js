@@ -1,12 +1,8 @@
 const __VERSION__ = 1,
   Browser = {
     Alook: {
-      open: url => {
-        $app.openURL(`Alook://${$text.URLEncode(url)}`);
-      },
-      download: url => {
-        $app.openURL(`Alook://download/${$text.URLEncode(url)}`);
-      }
+      open: url => $app.openURL(`Alook://${$text.URLEncode(url)}`),
+      download: url => $app.openURL(`Alook://download/${$text.URLEncode(url)}`)
     },
     Chrome: {
       jsbox: url => {
@@ -15,12 +11,8 @@ const __VERSION__ = 1,
           url: url
         });
       },
-      http: value => {
-        $app.openURL(`googlechrome://${value}`);
-      },
-      https: value => {
-        $app.openURL(`googlechromes://${value}`);
-      }
+      http: value => $app.openURL(`googlechrome://${value}`),
+      https: value => $app.openURL(`googlechromes://${value}`)
     },
     QQBrowser: url => {
       $app.openBrowser({
@@ -35,13 +27,9 @@ const __VERSION__ = 1,
           url: url
         });
       },
-      web: url => {
-        $app.openURL(`firefox://open-url?url=${url}`);
-      }
+      web: url => $app.openURL(`firefox://open-url?url=${url}`)
     },
-    FirefoxWeb: url => {
-      $app.openURL(`firefox://open-url?url=${url}`);
-    },
+    FirefoxWeb: url => $app.openURL(`firefox://open-url?url=${url}`),
     Safari: {
       Preview: url => {
         $safari.open({
@@ -72,110 +60,55 @@ const __VERSION__ = 1,
       }
     },
     Microsoftedge: {
-      http: value => {
-        $app.openURL(`microsoft-edge-http://${value}`);
-      },
-      https: value => {
-        $app.openURL(`microsoft-edge-https://${value}`);
-      },
-      web: value => {
-        $app.openURL(`microsoft-edge://${value}`);
-      },
-      httpOrHttps: value => {
-        $app.openURL(`microsoft-edge-${value}`);
-      }
+      http: value => $app.openURL(`microsoft-edge-http://${value}`),
+      https: value => $app.openURL(`microsoft-edge-https://${value}`),
+      web: value => $app.openURL(`microsoft-edge://${value}`),
+      httpOrHttps: value => $app.openURL(`microsoft-edge-${value}`)
     }
   },
   Video = {
-    AVPlayer: url => {
-      $app.openURL(`AVPlayer://${$text.URLEncode(url)}`);
-    },
-    NPlayer: url => {
-      $app.openURL(`nplayer-${url}`);
-    },
-    VlcPlayer: url => {
-      $app.openURL(`vlc-x-callback://x-callback-url/ACTION?url=${url}`);
-    },
+    AVPlayer: url => $app.openURL(`AVPlayer://${$text.URLEncode(url)}`),
+    NPlayer: url => $app.openURL(`nplayer-${url}`),
+    VlcPlayer: url =>
+      $app.openURL(`vlc-x-callback://x-callback-url/ACTION?url=${url}`),
     Bilibili: {
-      app: (mode, id) => {
-        $app.openURL(`bilibili://${mode}/${id}`);
-      },
-      video: vid => {
-        Video.Bilibili.app("video", vid);
-      },
-      getVideoUrl: vid => {
-        return `bilibili://video/${vid}`;
-      },
-      live: roomid => {
-        Video.Bilibili.app("live", roomid);
-      },
-      space: uid => {
-        Video.Bilibili.app("space", uid);
-      },
-      article: id => {
-        Video.Bilibili.app("article", id);
-      },
-      dynamic: id => {
-        Video.Bilibili.app("following/detail", id);
-      }
+      app: (mode, id) => $app.openURL(`bilibili://${mode}/${id}`),
+      video: vid => Video.Bilibili.app("video", vid),
+      getVideoUrl: vid => `bilibili://video/${vid}`,
+      live: roomid => Video.Bilibili.app("live", roomid),
+      space: uid => Video.Bilibili.app("space", uid),
+      article: id => Video.Bilibili.app("article", id),
+      dynamic: id => Video.Bilibili.app("following/detail", id)
     },
     Acfun: {
-      video: vid => {
-        $app.openURL(Video.Acfun.getVideoUrl(vid));
-      },
-      getVideoUrl: vid => {
-        return `acfun://detail/video/${vid}`;
-      },
-      getVideoWebUrl: vid => {
-        return `https://www.acfun.cn/v/ac${vid}`;
-      },
-      user: uid => {
-        $app.openURL(`acfun://detail/uploader/${uid}`);
-      }
+      video: vid => $app.openURL(Video.Acfun.getVideoUrl(vid)),
+      getVideoUrl: vid => `acfun://detail/video/${vid}`,
+      getVideoWebUrl: vid => `https://www.acfun.cn/v/ac${vid}`,
+      user: uid => $app.openURL(`acfun://detail/uploader/${uid}`)
     }
   },
   Social = {
-    adaoThread: t => {
-      $app.openURL(`adnmb://t/${t}`);
-    },
+    adaoThread: t => $app.openURL(`adnmb://t/${t}`),
     V2er: {
-      topic: _t => {
-        $app.openURL(`v2er://topic?id=${_t}`);
-      },
-      node: _node => {
-        $app.openURL(`v2er://node?title=${_node}`);
-      },
-      member: _uid => {
-        $app.openURL(`v2er://member?username=${_uid}`);
-      },
-      search: _key => {
-        $app.openURL(`v2er://search?query=${_key}`);
-      }
+      topic: _t => $app.openURL(`v2er://topic?id=${_t}`),
+      node: _node => $app.openURL(`v2er://node?title=${_node}`),
+      member: _uid => $app.openURL(`v2er://member?username=${_uid}`),
+      search: _key => $app.openURL(`v2er://search?query=${_key}`)
     },
     Telegram: {
-      me: _id => {
-        $app.openURL(`tg://resolve?domain=${_id}`);
-      }
+      me: _id => $app.openURL(`tg://resolve?domain=${_id}`)
     },
     Twitter: {
-      status: _value => {
-        $app.openURL(`twitter://status?id=${_value}`);
-      },
-      user: _value => {
-        $app.openURL(`twitter://user?screen_name=${_value}`);
-      }
+      status: _value => $app.openURL(`twitter://status?id=${_value}`),
+      user: _value => $app.openURL(`twitter://user?screen_name=${_value}`)
     },
     Instagram: {
-      user: _value => {
-        $app.openURL(`instagram://user?username=${_value}`);
-      }
+      user: _value => $app.openURL(`instagram://user?username=${_value}`)
     }
   },
   File = {
     Documents: {
-      open: url => {
-        $app.openURL(`r${url}`);
-      }
+      open: url => $app.openURL(`r${url}`)
     }
   },
   Network = {
@@ -189,17 +122,12 @@ const __VERSION__ = 1,
       }
     },
     Workingcopy: {
-      clone: url => {
-        $app.openURL(`working-copy://clone?remote=${url}`);
-      }
+      clone: url => $app.openURL(`working-copy://clone?remote=${url}`)
     },
     PPhub: {
-      user: user => {
-        $app.openURL(`pphub://user?login=${user}`);
-      },
-      repository: (user, repository) => {
-        $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
-      }
+      user: user => $app.openURL(`pphub://user?login=${user}`),
+      repository: (user, repository) =>
+        $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`)
     }
   },
   Tool = {
@@ -214,11 +142,8 @@ const __VERSION__ = 1,
         }
         $app.openURL(installUrl);
       },
-      run: (name, location = "local") => {
-        $app.openURL(
-          `jsbox://run?name=${encodeURI(name)}&location=${location}`
-        );
-      }
+      run: (name, location = "local") =>
+        $app.openURL(`jsbox://run?name=${encodeURI(name)}&location=${location}`)
     }
   };
 module.exports = {
