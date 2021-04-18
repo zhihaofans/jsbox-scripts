@@ -1,11 +1,3 @@
-// PPHub
-let pphubOpenUser = user => {
-  $app.openURL(`pphub://user?login=${user}`);
-};
-let pphubOpenRepository = (user, repository) => {
-  $app.openURL(`pphub://repo?owner=${user}&repo=${repository}`);
-};
-
 const __VERSION__ = 1,
   Browser = {
     Alook: {
@@ -230,8 +222,6 @@ const __VERSION__ = 1,
     }
   };
 module.exports = {
-  pphubOpenUser,
-  pphubOpenRepository,
   __VERSION__,
   Browser,
   Video,
