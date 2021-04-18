@@ -9,10 +9,6 @@ let pphubOpenRepository = (user, repository) => {
 let workingcopyClone = url => {
   $app.openURL(`working-copy://clone?remote=${url}`);
 };
-// Microsoft Edge
-let microsoftEdgeWeb = url => {
-  $app.openURL(`microsoft-edge-${url}`);
-};
 // Jsbox
 let jsboxInstall = (url, name = undefined, icon = undefined) => {
   let installUrl = `jsbox://import?url=${encodeURI(url)}`;
@@ -231,7 +227,6 @@ module.exports = {
   pphubOpenUser,
   pphubOpenRepository,
   workingcopyClone,
-  microsoftEdgeWeb,
   jsboxInstall,
   jsboxRun,
   thorLaunch,
