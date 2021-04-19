@@ -172,5 +172,13 @@ module.exports = {
     app: "msedge",
     func: "https",
     regex: /https:\/\/(.+)/
+  },
+  "app.qimai.info": {
+    type: "app",
+    app: "qimai",
+    func: "appInfo",
+    regex: /https:\/\/apps.apple.com\/(cn|us)\/app\/(.+)\/id(\d+)/
   }
 };
+
+// https://apps.apple.com/us/app/alook-browser-2x-speed/id1261944766
