@@ -104,6 +104,14 @@ const __VERSION__ = 1,
     },
     Instagram: {
       user: _value => $app.openURL(`instagram://user?username=${_value}`)
+    },
+    Vvebo: {
+      userId: id => $app.openURL(`vvebo://user?id=${id}`),
+      userName: name => $app.openURL(`vvebo://user?name=${name}`),
+      search: q => $app.openURL(`vvebo://search?q=${q}`),
+      link: url => $app.openURL(`vvebo://link?url=${url}`),
+      statusId: id => $app.openURL(`vvebo://status?id=${id}`),
+      statusMid: mid => $app.openURL(`vvebo://status?mid=${mid}`)
     }
   },
   File = {
