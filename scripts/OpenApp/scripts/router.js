@@ -178,7 +178,17 @@ module.exports = {
     app: "qimai",
     func: "appInfo",
     regex: /https:\/\/apps.apple.com\/(cn|us)\/app\/(.+)\/id(\d+)/
+  },
+  "v2er.topic.cdn.v2ex.co": {
+    type: "social",
+    app: "v2er",
+    func: "topic",
+    regex: /https:\/\/cdn.v2ex.co\/t\/(.+)/
+  },
+  "v2er.member.cdn.v2ex.co": {
+    type: "social",
+    app: "v2er",
+    func: "member",
+    regex: /https:\/\/cdn.v2ex.co\/member\/(.+)/
   }
 };
-
-// https://apps.apple.com/us/app/alook-browser-2x-speed/id1261944766
