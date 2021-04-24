@@ -1,0 +1,103 @@
+{
+  "props" : {
+    "id" : "keyboard.ux"
+  },
+  "views" : [
+    {
+      "type" : "list",
+      "props" : {
+        "frame" : {
+          "y" : 10,
+          "x" : 10,
+          "width" : 394,
+          "height" : 264
+        },
+        "data" : [
+          {
+            "button" : {
+              "text" : "A"
+            }
+          },
+          {
+            "button" : {
+              "text" : "B"
+            }
+          },
+          {
+            "button" : {
+              "text" : "C"
+            }
+          }
+        ],
+        "id" : "list[0]",
+        "bgcolor" : {
+          "$type" : "$color",
+          "$props" : {
+            "red" : 238,
+            "alpha" : 1,
+            "blue" : 241,
+            "green" : 241
+          }
+        },
+        "separatorHidden" : true,
+        "template" : {
+          "props" : {
+            "id" : "<T>TEMPLATE",
+            "height" : 44
+          },
+          "views" : [
+            {
+              "type" : "button",
+              "props" : {
+                "frame" : {
+                  "y" : 10,
+                  "x" : 10,
+                  "width" : 100,
+                  "height" : 36
+                },
+                "title" : "Button",
+                "tintColor" : {
+                  "$type" : "$color",
+                  "$props" : {
+                    "red" : 255,
+                    "alpha" : 1,
+                    "blue" : 255,
+                    "green" : 255
+                  }
+                },
+                "id" : "button[0]"
+              },
+              "constraints" : [
+                {
+                  "relation" : 0,
+                  "multiplier" : 1,
+                  "x" : {
+                    "id" : "button[0]",
+                    "attribute" : 1,
+                    "safe-area" : false
+                  },
+                  "constant" : 0
+                },
+                {
+                  "relation" : 0,
+                  "multiplier" : 1,
+                  "x" : {
+                    "id" : "button[0]",
+                    "attribute" : 2
+                  },
+                  "constant" : 0
+                }
+              ]
+            }
+          ]
+        },
+        "actions" : [
+
+        ]
+      },
+      "constraints" : [
+
+      ]
+    }
+  ]
+}
