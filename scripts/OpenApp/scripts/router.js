@@ -117,7 +117,7 @@ module.exports = {
     type: "social",
     app: "twitter",
     func: "user",
-    regex: /https:\/\/mibile.twitter.com\/([A-Za-z0-9_]+)/
+    regex: /https:\/\/mobile.twitter.com\/([A-Za-z0-9_]+)/
   },
   "chrome.http": {
     type: "web",
