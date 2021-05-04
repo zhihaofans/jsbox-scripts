@@ -1,9 +1,10 @@
 class SQLite {
   constructor(_dataBaseFile) {
-    this.DATABASEFILE = _dataBaseFile;
+    this.DATABASE_FILE = _dataBaseFile;
+    this.DEFAULT_DIR = "/assets/.files/database/";
   }
   init() {
-    return $sqlite.open(this.DATABASEFILE);
+    return $sqlite.open(this.DATABASE_FILE);
   }
   update(sql, args = undefined) {
     this.createSimpleTable();
