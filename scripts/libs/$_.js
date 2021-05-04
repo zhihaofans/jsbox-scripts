@@ -166,6 +166,8 @@ class View {
             {
               type: "list",
               props: {
+                autoRowHeight: true,
+                estimatedRowHeight: 10,
                 data: listData
               },
               layout: $layout.fill,
