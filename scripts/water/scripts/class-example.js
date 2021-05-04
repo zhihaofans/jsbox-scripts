@@ -8,4 +8,20 @@ class Result {
   }
 }
 
-module.exports = { Result };
+class SiteLib {
+  constructor(database, $$, http) {
+    this.DATABASE_ID = database;
+    this.$$ = $$;
+    this.HTTP = http;
+  }
+}
+class Site {
+  constructor(obj, file, id, name, version) {
+    this.OBJ = obj;
+    this.file = file;
+    this.ID = id;
+    this.NAME = name;
+    this.VERSION = version;
+  }
+}
+module.exports = { Result, SiteLib, Site };

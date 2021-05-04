@@ -1,11 +1,14 @@
+const loader = require("./scripts/loader");
 $ui.alert({
-    title: "",
-    message: "",
-    actions: [
-        {
-            title: "OK",
-            disabled: false, // Optional
-            handler: function() {}
-        }
-    ]
+  title: "",
+  message: "",
+  actions: [
+    {
+      title: "init",
+      disabled: false, // Optional
+      handler: function () {
+        loader.init();
+      }
+    }
+  ]
 });
