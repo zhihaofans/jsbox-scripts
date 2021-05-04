@@ -213,7 +213,7 @@ const __VERSION__ = 3,
     paste: () => {
       return $clipboard.text || "";
     },
-    code: str => {
+    toQrcode: str => {
       return $qrcode.encode(str);
     },
     fromQrcode: qrcode => {
