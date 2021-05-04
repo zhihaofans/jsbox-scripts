@@ -424,10 +424,9 @@ const __VERSION__ = 3,
     getNowUnixTimeSecond: () => {
       return Math.round(new Date().getTime() / 1000);
     },
-    iso8601ToLocaltime: ISO8601 => {
+    iso8601ToLocaltime: (ISO8601, timezone = "Asia/Shanghai") => {
       const moment = require("moment");
-      let timezone = '"Asia/Shanghai';
-      moment(ISO8601).tz(timezone).format("YYYY-MM-DD hh:mm:ss");
+      return moment(ISO8601).tz(timezone).format("YYYY-MM-DD hh:mm:ss");
     }
   },
   Push = {
