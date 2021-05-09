@@ -195,8 +195,8 @@ function inputAlert({
 function loginAlert({
   title = "",
   message,
-  placeholder1,
-  placeholder2,
+  placeholder1 = "placeholder1",
+  placeholder2 = "placeholder2",
   cancelText = $$l10n("CANCEL"),
   confirmText = $$l10n("OK")
 } = {}) {
@@ -244,22 +244,49 @@ function loginAlert({
   });
 }
 //Usage
-const showPlainAlert = async (title, message) => {
+const showPlainAlert = async (
+    title,
+    message,
+    confirmText = undefined,
+    cancelText = undefined
+  ) => {
     return await plainAlert({
       title: title,
-      message: message
+      message: message,
+      confirmText: confirmText,
+      cancelText: cancelText
     });
   },
-  showInputAlert = async (title, message = "", text = "") => {
+  showInputAlert = async (
+    title,
+    message = "",
+    text = "",
+    confirmText = undefined,
+    cancelText = undefined
+  ) => {
     return await inputAlert({
       title: title,
       message: message,
-      text: text
+      text: text,
+      confirmText: confirmText,
+      cancelText: cancelText
     });
   },
-  showLoginAlert = async title => {
+  showLoginAlert = async (
+    title,
+    message = undefined,
+    usernamePlaceholder = undefined,
+    passwordPlaceholder = undefined,
+    confirmText = undefined,
+    cancelText = undefined
+  ) => {
     return await loginAlert({
-      title: title
+      title: title,
+      message: message,
+      placeholder1: usernamePlaceholder,
+      placeholder2: passwordPlaceholder,
+      confirmText: confirmText,
+      cancelText: cancelText
     });
   };
 module.exports = {
