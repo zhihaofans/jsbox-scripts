@@ -85,6 +85,22 @@ const __VERSION__ = 1,
       getVideoUrl: vid => `acfun://detail/video/${vid}`,
       getVideoWebUrl: vid => `https://www.acfun.cn/v/ac${vid}`,
       user: uid => $app.openURL(`acfun://detail/uploader/${uid}`)
+    },
+    Infuse: {
+      play: (url, success = undefined, error = undefined) => {
+        if (url) {
+          let result = `infuse://x-callback-url/play?url=${url}`;
+          if (success) {
+            result += `&x-success=${success}`;
+          }
+          if (error) {
+            result += `&x-error=${error}`;
+          }
+          $app.openURL(result);
+        } else {
+          return;
+        }
+      }
     }
   },
   Social = {
