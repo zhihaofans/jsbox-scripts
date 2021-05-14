@@ -49,7 +49,7 @@ class SQLite {
         $console.error(_ERROR);
       }
     } else {
-      $console.error("createSimpleTable:table_id = undefined");
+      $console.error("DataBase.createSimpleTable:table_id = undefined");
     }
   }
   parseSimpleQuery(result) {
@@ -73,7 +73,7 @@ class SQLite {
         return undefined;
       }
     } catch (_ERROR) {
-      $console.error(`Config.lib.parseSimpleQuery:${_ERROR.message}`);
+      $console.error(`DataBase.parseSimpleQuery:${_ERROR.message}`);
       return undefined;
     }
   }
@@ -98,7 +98,7 @@ class SQLite {
         return undefined;
       }
     } catch (_ERROR) {
-      $console.error(`Config.lib.getSimpleData:${_ERROR.message}`);
+      $console.error(`DataBase.getSimpleData:${_ERROR.message}`);
       return undefined;
     }
   }
@@ -121,7 +121,7 @@ class SQLite {
         return false;
       }
     } catch (_ERROR) {
-      $console.error(`Config.lib.setSimpleData:${_ERROR.message}`);
+      $console.error(`DataBase.setSimpleData:${_ERROR.message}`);
       return false;
     }
   }
@@ -136,7 +136,7 @@ class SQLite {
       }
       return this.getSimpleData(table, sql_key) || undefined;
     } catch (_ERROR) {
-      $console.error(`Config.lib.SQLite.auto:${_ERROR.message}`);
+      $console.error(`DataBase.SQLite.auto:${_ERROR.message}`);
       return undefined;
     }
   }
