@@ -3,7 +3,8 @@ class Core {
   constructor(name) {
     this.SITE_NAME = "";
     this.SITE_VERSION = "";
-    this.NEED_CORE_VERSION = 1;
+    this.SITE_AUTHOR = "";
+    this.NEED_CORE_VERSION = 0;
   }
   checkCoreVersion() {
     if (CORE_VERSION == this.NEED_CORE_VERSION) {
@@ -17,5 +18,14 @@ class Core {
       return 1;
     }
   }
+  async httpRequest({ method, url, header, body }) {
+    return await $http.request({
+      method: method,
+      url: url,
+      header: header,
+      body: body
+    });
+  }
+  parseData(_data) {}
 }
 module.exports = Core;
